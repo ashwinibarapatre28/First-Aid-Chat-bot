@@ -1,0 +1,846 @@
+[
+  {
+    "id": "cpr",
+    "title": "CPR / Cardiac Arrest",
+    "severity": "Critical",
+    "icon": "heart-pulse",
+    "short_description": "Immediate life-support procedure for someone who is unresponsive and not breathing normally.",
+    "warning": "CRITICAL EMERGENCY: Cardiac arrest requires immediate CPR and urgent emergency services dispatch.",
+    "steps": [
+      "Check the scene for safety and ensure you are not in danger.",
+      "Check for responsiveness: Tap the person's shoulders firmly and shout 'Are you okay?'.",
+      "Call 112 (or local emergency services) immediately or instruct someone nearby to call and fetch an AED.",
+      "Check breathing for 10 seconds: If not breathing or only gasping, position the person on their back on a firm surface.",
+      "Place your hands in the center of the chest (lower half of breastbone). Interlock your fingers.",
+      "Push hard and fast: Perform compressions at a rate of 100\u2013120 beats per minute, at least 2 inches (5 cm) deep. Allow full chest recoil.",
+      "If trained, deliver 2 rescue breaths after every 30 compressions. Otherwise, perform hands-only CPR continuously.",
+      "Continue compressions until the person shows signs of life, an AED arrives, or emergency paramedics take over."
+    ],
+    "when_to_call_emergency": [
+      "Person is unresponsive and not breathing normally or gasping",
+      "Sudden collapse without warning",
+      "No detectable pulse or signs of circulation"
+    ],
+    "do_not_list": [
+      "Do not delay starting CPR to look for a pulse if untrained",
+      "Do not perform CPR on a conscious or normally breathing person",
+      "Do not interrupt compressions for more than 10 seconds"
+    ],
+    "keywords": [
+      "cpr",
+      "cardiac arrest",
+      "heart attack",
+      "unresponsive",
+      "stopped breathing",
+      "no pulse",
+      "collapse",
+      "chest pain",
+      "cardiac"
+    ]
+  },
+  {
+    "id": "choking",
+    "title": "Choking",
+    "severity": "Critical",
+    "icon": "lungs",
+    "short_description": "Emergency protocol for severe airway blockage in an adult or child.",
+    "warning": "Act immediately if the person cannot breathe, speak, or cough effectively.",
+    "steps": [
+      "Assess severity: Ask 'Are you choking?'. If they can speak or cough loudly, encourage them to keep coughing.",
+      "If they cannot breathe, speak, or cough, call emergency services (112) immediately.",
+      "Stand behind the person, lean them slightly forward, and give up to 5 firm back blows between their shoulder blades using the heel of your hand.",
+      "If back blows fail, perform abdominal thrusts (Heimlich maneuver): Stand behind, wrap arms around waist, place fist just above navel.",
+      "Grasp your fist with your other hand and pull inward and upward sharply up to 5 times.",
+      "Alternate between 5 back blows and 5 abdominal thrusts until object is dislodged or person becomes unresponsive.",
+      "If person becomes unresponsive, lower them to the floor safely and begin CPR compressions immediately."
+    ],
+    "when_to_call_emergency": [
+      "Person cannot breathe, turn blue, or lose consciousness",
+      "Airway remains blocked after 5 back blows and abdominal thrusts",
+      "Person becomes unresponsive"
+    ],
+    "do_not_list": [
+      "Do not perform blind finger sweeps in the mouth",
+      "Do not perform abdominal thrusts on infants under 1 year (use back blows and chest thrusts instead)",
+      "Do not slap a choking person if they are coughing effectively"
+    ],
+    "keywords": [
+      "choking",
+      "choke",
+      "airway blocked",
+      "cannot breathe",
+      "gasping",
+      "food stuck",
+      "strangling",
+      "throat blocked",
+      "heimlich"
+    ]
+  },
+  {
+    "id": "severe-bleeding",
+    "title": "Severe Bleeding",
+    "severity": "Critical",
+    "icon": "droplet-alert",
+    "short_description": "Urgent control of major hemorrhaging to prevent hemorrhagic shock.",
+    "warning": "Uncontrolled severe bleeding can be life-threatening within minutes. Call 112 immediately.",
+    "steps": [
+      "Ensure area safety and put on protective gloves if available.",
+      "Call 112 (or emergency services) immediately for uncontrollable or spurting bleeding.",
+      "Expose the wound by removing or cutting away clothing to locate the exact source of bleeding.",
+      "Apply direct, continuous pressure over the wound using a clean cloth, sterile bandage, or gloved hands.",
+      "Maintain firm pressure without releasing to check the wound for at least 5-10 minutes.",
+      "If blood soaks through, do not remove the original dressing; add more layers on top and compress harder.",
+      "If bleeding is on a limb and direct pressure fails to control severe arterial bleeding, apply a commercial tourniquet 2-3 inches above the wound.",
+      "Keep the person warm, lying down, and quiet to treat for shock until paramedics arrive."
+    ],
+    "when_to_call_emergency": [
+      "Bleeding is spurting, heavy, or does not stop after 10 minutes of direct pressure",
+      "Wound is deep, exposes muscle/bone, or contains embedded objects",
+      "Person shows signs of shock (pale skin, confusion, rapid weak pulse)"
+    ],
+    "do_not_list": [
+      "Do not remove embedded objects from the wound; pad around them",
+      "Do not remove blood-soaked bandages\u2014apply new dressings over them",
+      "Do not apply tourniquets over joints or use thin wire/string as a makeshift tourniquet"
+    ],
+    "keywords": [
+      "bleeding",
+      "blood",
+      "severe bleeding",
+      "hemorrhage",
+      "gushing",
+      "wound",
+      "cut arterial",
+      "spurting blood",
+      "deep cut",
+      "blood loss"
+    ]
+  },
+  {
+    "id": "burns",
+    "title": "Burns",
+    "severity": "High",
+    "icon": "flame",
+    "short_description": "First-aid guidance for heat, chemical, or electrical burn injuries.",
+    "warning": "Seek urgent medical attention for severe, extensive, facial, or chemical/electrical burns.",
+    "steps": [
+      "Ensure your own safety and stop the burning process immediately (extinguish flames, disconnect power).",
+      "Cool the burn: Hold the affected area under cool running tap water for 10 to 20 minutes. Do not use ice water.",
+      "Remove jewelry, watches, or non-sticking clothing near the burned area before swelling occurs.",
+      "Cover the burn loosely with a sterile, non-adherent bandage or clean plastic cling wrap to prevent infection.",
+      "Keep the person warm with a blanket over uninjured areas to prevent hypothermia.",
+      "Administer over-the-counter pain relievers if appropriate and person is conscious.",
+      "Seek emergency medical assistance (112) for severe, large, or facial burns."
+    ],
+    "when_to_call_emergency": [
+      "Burn covers a large area (larger than person's palm)",
+      "Burn is deep, charred, white, or leathery (3rd degree)",
+      "Burn involves face, hands, feet, groin, major joints, or airway",
+      "Burn is caused by chemicals, high-voltage electricity, or explosion"
+    ],
+    "do_not_list": [
+      "Do not apply ice, ice water, butter, oil, toothpaste, or ointments to open burns",
+      "Do not pop blisters or peel away burned skin",
+      "Do not remove clothing stuck to burned skin"
+    ],
+    "keywords": [
+      "burn",
+      "burns",
+      "scald",
+      "fire",
+      "hot water",
+      "charred",
+      "blister",
+      "chemical burn",
+      "thermal burn",
+      "skin burn"
+    ]
+  },
+  {
+    "id": "fractures",
+    "title": "Fractures & Bone Injuries",
+    "severity": "High",
+    "icon": "bone",
+    "short_description": "Care for suspected broken bones, dislocations, or major joint trauma.",
+    "warning": "Immobilize the limb. Do not attempt to realign or push back protruding bones.",
+    "steps": [
+      "Keep the person still and calm. Avoid moving them unless immediate physical danger exists.",
+      "Call 112 immediately if open fracture (bone protruding), severe pain, or spine/neck injury is suspected.",
+      "Control any visible bleeding around the injury site by pressing gently around protruding bone.",
+      "Immobilize the injured area in the position found using a splint or padding (newspaper, cardboard, cloth).",
+      "Apply a cold pack wrapped in a cloth to reduce swelling and pain for 15-20 minutes.",
+      "Treat for shock: Keep the person lying flat and covered with a warm blanket.",
+      "Monitor circulation below the injury site (check warmth, feeling, and skin color)."
+    ],
+    "when_to_call_emergency": [
+      "Bone is piercing through the skin (open fracture)",
+      "Injured limb appears deformed, crooked, or lacks sensation/pulse",
+      "Head, neck, or back spinal injury is suspected",
+      "Person cannot bear weight or is in excruciating pain"
+    ],
+    "do_not_list": [
+      "Do not try to force or push a broken bone back into place",
+      "Do not test ability to walk or move an injured joint",
+      "Do not move a person with suspected spine or neck trauma"
+    ],
+    "keywords": [
+      "fracture",
+      "broken bone",
+      "bone",
+      "broken arm",
+      "broken leg",
+      "dislocation",
+      "fractured",
+      "snapped bone",
+      "joint injury"
+    ]
+  },
+  {
+    "id": "fainting",
+    "title": "Fainting (Syncope)",
+    "severity": "Moderate",
+    "icon": "user-down",
+    "short_description": "Response for temporary loss of consciousness due to reduced brain blood flow.",
+    "warning": "If fainting lasts longer than 1 minute or occurs with chest pain, call emergency services.",
+    "steps": [
+      "Position the person safely: Lie them flat on their back on the floor.",
+      "Elevate their legs about 12 inches (30 cm) above heart level to restore blood flow to the brain.",
+      "Loosen tight clothing around the neck, chest, and waist (collars, belts).",
+      "Ensure adequate ventilation: Open windows or clear crowding people away.",
+      "Check responsiveness and breathing: Ensure airway is open and clear.",
+      "If the person recovers, keep them lying down for several minutes before helping them sit up slowly.",
+      "If they do not regain consciousness within 1 minute, call 112 and prepare to perform CPR if breathing stops."
+    ],
+    "when_to_call_emergency": [
+      "Person remains unconscious for more than 60 seconds",
+      "Fainting is accompanied by chest pain, shortness of breath, or numbness",
+      "Person suffered a head injury during the fall",
+      "Person has a history of heart conditions or diabetes"
+    ],
+    "do_not_list": [
+      "Do not splash cold water on their face or slap them",
+      "Do not give food, water, or medicine until fully alert and standing stably",
+      "Do not stand the person up quickly immediately after regaining consciousness"
+    ],
+    "keywords": [
+      "fainting",
+      "fainted",
+      "syncope",
+      "passed out",
+      "unconscious",
+      "blackout",
+      "dizzy",
+      "lightheaded",
+      "collapsed"
+    ]
+  },
+  {
+    "id": "seizures",
+    "title": "Seizures & Convulsions",
+    "severity": "High",
+    "icon": "activity",
+    "short_description": "First-aid for epileptic fits, seizures, or sudden involuntary jerking movements.",
+    "warning": "Protect the person from harm. Never place objects inside their mouth.",
+    "steps": [
+      "Stay calm and note the exact start time of the seizure.",
+      "Protect from injury: Clear sharp or hard objects away from the surrounding area.",
+      "Cushion their head with a folded jacket, towel, or soft pillow.",
+      "Do not hold them down or restrain their movements.",
+      "Gently roll the person onto their side (recovery position) as soon as shaking stops to keep airway clear.",
+      "Reassure the person as they regain consciousness, as they may feel confused or tired.",
+      "Time the duration: Call 112 if the seizure lasts longer than 5 minutes or repeats."
+    ],
+    "when_to_call_emergency": [
+      "Seizure lasts longer than 5 minutes",
+      "Second seizure follows immediately without regaining consciousness",
+      "Person is pregnant, diabetic, or injured during the fall",
+      "Seizure occurs in water or person has difficulty breathing afterwards"
+    ],
+    "do_not_list": [
+      "Do not put anything in the person's mouth (no spoon, wallet, or fingers)",
+      "Do not try to restrain, hold down, or stop their jerking movements",
+      "Do not offer water or food until they are completely alert"
+    ],
+    "keywords": [
+      "seizure",
+      "fit",
+      "convulsion",
+      "epilepsy",
+      "epileptic",
+      "shaking",
+      "foaming at mouth",
+      "jerking",
+      "spasm"
+    ]
+  },
+  {
+    "id": "electric-shock",
+    "title": "Electric Shock",
+    "severity": "Critical",
+    "icon": "zap",
+    "short_description": "High and low voltage electrical contact safety and resuscitation protocol.",
+    "warning": "DO NOT touch a victim who is still in contact with an active electric source.",
+    "steps": [
+      "Ensure safety first: Do NOT touch the person if they are still touching the live electrical source.",
+      "Turn off the main power breaker/switch immediately, or unplug the appliance safely.",
+      "If power cannot be cut, use a non-conductive object (dry wooden broomstick or rubber mat) to push the source away.",
+      "Call 112 immediately for emergency medical assistance.",
+      "Once safe, check for breathing and responsiveness.",
+      "If the person is not breathing, start CPR compressions hard and fast immediately.",
+      "Treat visible electrical burns with cool water and cover loosely with sterile dry dressings."
+    ],
+    "when_to_call_emergency": [
+      "All high-voltage electrical injuries require emergency hospital evaluation",
+      "Person experienced loss of consciousness, confusion, or difficulty breathing",
+      "Person exhibits irregular heart rate, burns, or muscle pain"
+    ],
+    "do_not_list": [
+      "Do not touch the victim with bare hands while electrical current is active",
+      "Do not go near high-voltage wires until power company confirms shut-off",
+      "Do not apply ice or butter to electrical burn entry/exit wounds"
+    ],
+    "keywords": [
+      "electric shock",
+      "electrocution",
+      "current",
+      "wire",
+      "shocked",
+      "high voltage",
+      "power line",
+      "lightning"
+    ]
+  },
+  {
+    "id": "poisoning",
+    "title": "Poisoning & Ingestion",
+    "severity": "Critical",
+    "icon": "skull",
+    "short_description": "Action guide for toxic substance ingestion, chemical inhalation, or overdose.",
+    "warning": "Identify the toxic substance if safe. Do not induce vomiting unless advised by medical professionals.",
+    "steps": [
+      "Ensure scene safety and remove the person from toxic fumes or chemical source if applicable.",
+      "Check responsiveness and breathing. Call 112 or local Poison Control immediately.",
+      "If poison was swallowed: Do NOT induce vomiting unless specifically instructed by poison control experts.",
+      "If toxic fumes inhaled: Move person to fresh outdoor air immediately.",
+      "If chemical on skin/eyes: Flush continuously with clean tepid water for at least 15-20 minutes.",
+      "Save the chemical container, bottle, or plant sample for medical personnel identification.",
+      "If person loses consciousness or stops breathing, place flat and start CPR."
+    ],
+    "when_to_call_emergency": [
+      "Person is confused, drowsy, vomiting, or losing consciousness",
+      "Hazardous chemical, acid, detergent, or drug overdose suspected",
+      "Difficulty breathing or chest tightness present"
+    ],
+    "do_not_list": [
+      "Do not induce vomiting unless explicitly directed by Poison Control or medical doctors",
+      "Do not give syrup of ipecac, salt water, or charcoal on your own",
+      "Do not neutralize acids with alkalis or give drink to an unconscious person"
+    ],
+    "keywords": [
+      "poisoning",
+      "poison",
+      "swallowed chemical",
+      "overdose",
+      "toxic",
+      "ingested detergent",
+      "acid",
+      "pesticide",
+      "venom"
+    ]
+  },
+  {
+    "id": "heat-stroke",
+    "title": "Heat Stroke & Hyperthermia",
+    "severity": "High",
+    "icon": "sun",
+    "short_description": "Emergency cooling protocol for severe heat-related illness and high body temperature.",
+    "warning": "Heat stroke is a medical emergency that can damage internal organs. Rapid cooling is crucial.",
+    "steps": [
+      "Call 112 immediately if person has high temperature (>103\u00b0F/40\u00b0C), confusion, or altered mental state.",
+      "Move the person to a cool, shaded, or air-conditioned indoor area immediately.",
+      "Remove heavy outer clothing and loosen tight garments.",
+      "Rapidly cool the body: Apply cool wet towels, sponge skin with water, or place ice packs under armpits, neck, and groin.",
+      "Fan the person continuously while keeping skin moist to promote evaporative cooling.",
+      "If conscious and able to swallow, offer small sips of cool water or electrolyte drink.",
+      "Monitor temperature and breathing until emergency responders arrive."
+    ],
+    "when_to_call_emergency": [
+      "Core body temperature elevated with hot, red, dry, or damp skin",
+      "Confusion, slurred speech, delirium, or loss of consciousness",
+      "Vomiting or inability to drink fluids"
+    ],
+    "do_not_list": [
+      "Do not give ice-cold water to drink rapidly",
+      "Do not give aspirin or acetaminophen for heat stroke temperature",
+      "Do not leave the person unattended in hot surroundings"
+    ],
+    "keywords": [
+      "heat stroke",
+      "heat exhaustion",
+      "sunstroke",
+      "overheating",
+      "high fever",
+      "hot skin",
+      "dehydration",
+      "sun exposure"
+    ]
+  },
+  {
+    "id": "nosebleed",
+    "title": "Nosebleed (Epistaxis)",
+    "severity": "Moderate",
+    "icon": "droplet",
+    "short_description": "First-aid steps to stop nasal bleeding efficiently and prevent blood swallowing.",
+    "warning": "Sit upright and lean forward slightly. Do not tilt head back.",
+    "steps": [
+      "Sit upright and lean your head and torso slightly forward to prevent blood flowing down your throat.",
+      "Pinch the soft lower part of your nose firmly between your thumb and index finger.",
+      "Breathe through your mouth while maintaining continuous pinch pressure for 10 to 15 minutes.",
+      "Apply a cold compress or ice pack wrapped in cloth across the bridge of your nose.",
+      "Do not release pinch pressure early to check if bleeding has stopped until 10 full minutes pass.",
+      "Spit out any blood that collects in your mouth rather than swallowing it.",
+      "If bleeding persists after 20 minutes of continuous pressure, seek emergency care."
+    ],
+    "when_to_call_emergency": [
+      "Bleeding continues for longer than 20 minutes despite continuous pressure",
+      "Nosebleed occurs after severe head injury or facial trauma",
+      "Person feels lightheaded, dizzy, or bleeds excessively"
+    ],
+    "do_not_list": [
+      "Do not tilt your head backward (this causes blood to drain into stomach and lungs)",
+      "Do not pack nasal cavity with tissue paper or cotton wool balls",
+      "Do not blow nose or lie flat immediately after bleeding stops"
+    ],
+    "keywords": [
+      "nosebleed",
+      "epistaxis",
+      "bleeding nose",
+      "nose blood",
+      "bloody nose"
+    ]
+  },
+  {
+    "id": "allergic-reaction",
+    "title": "Severe Allergic Reaction (Anaphylaxis)",
+    "severity": "Critical",
+    "icon": "shield-alert",
+    "short_description": "Rapid intervention for anaphylactic shock caused by food, stings, or medication.",
+    "warning": "ANAPHYLAXIS IS LIFE-THREATENING. Administer epinephrine (EpiPen) immediately if available and call 112.",
+    "steps": [
+      "Call 112 immediately for emergency medical assistance at the first sign of severe reaction.",
+      "Check if the person carries an Epinephrine Auto-Injector (EpiPen). Help them administer it into the outer thigh.",
+      "Position the person lying flat on their back. If breathing is difficult, allow them to sit up slightly.",
+      "Loosen tight clothing around neck and chest.",
+      "Remove allergen source if safe (e.g., scrape away bee stinger gently with a card).",
+      "Keep person warm and quiet. Do not give anything to drink.",
+      "If breathing stops or person becomes unresponsive, start CPR compressions immediately."
+    ],
+    "when_to_call_emergency": [
+      "Swelling of lips, tongue, throat, or face",
+      "Wheezing, severe shortness of breath, or gasping",
+      "Hives spreading rapidly across body with dizziness or fainting"
+    ],
+    "do_not_list": [
+      "Do not delay using an epinephrine auto-injector if anaphylaxis symptoms appear",
+      "Do not force an anaphylactic person to walk or stand up suddenly",
+      "Do not give oral allergy pills if person has trouble breathing or swallowing"
+    ],
+    "keywords": [
+      "allergic reaction",
+      "anaphylaxis",
+      "allergy",
+      "epipen",
+      "bee sting",
+      "swollen throat",
+      "peanut allergy",
+      "hives",
+      "swelling"
+    ]
+  },
+  {
+    "id": "sprains",
+    "title": "Sprains & Strains",
+    "severity": "Moderate",
+    "icon": "activity-norm",
+    "short_description": "R.I.C.E. protocol for ligament sprains and muscle strain injuries.",
+    "warning": "Apply the R.I.C.E protocol (Rest, Ice, Compression, Elevation) for joint sprains.",
+    "steps": [
+      "Rest: Stop activity immediately and avoid putting weight on the injured limb or joint.",
+      "Ice: Apply an ice pack wrapped in a damp towel for 15-20 minutes every 2-3 hours.",
+      "Compression: Wrap the area firmly with an elastic crepe bandage to control swelling (do not wrap too tightly).",
+      "Elevation: Prop the injured joint above heart level using pillows to reduce fluid accumulation.",
+      "Avoid H.A.R.M. in first 48 hours: Heat, Alcohol, Running, and Massage.",
+      "Over-the-counter pain relievers like ibuprofen can help manage discomfort if tolerated.",
+      "Seek medical evaluation if unable to bear weight or joint is unstable."
+    ],
+    "when_to_call_emergency": [
+      "Inability to bear any weight on the joint or severe immobility",
+      "Numbness, tingling, or cold feeling in toes/fingers below injury",
+      "Visible deformity or severe bruising indicating possible fracture"
+    ],
+    "do_not_list": [
+      "Do not apply direct heat or hot baths in the first 48 hours",
+      "Do not force movement or stretch an acutely sprained joint",
+      "Do not wrap compression bandage so tight that it cuts off blood circulation"
+    ],
+    "keywords": [
+      "sprain",
+      "strain",
+      "twisted ankle",
+      "ligament",
+      "swollen joint",
+      "pulled muscle",
+      "ankle sprain",
+      "wrist sprain"
+    ]
+  },
+  {
+    "id": "cuts-and-wounds",
+    "title": "Minor Cuts & Minor Wounds",
+    "severity": "Moderate",
+    "icon": "bandage",
+    "short_description": "Clean, disinfect, and dress superficial lacerations, scrapes, and minor cuts.",
+    "warning": "Clean thoroughly to prevent tetanus and bacterial wound infection.",
+    "steps": [
+      "Wash your hands thoroughly with soap and water before touching the wound.",
+      "Apply gentle direct pressure with a sterile gauze pad to stop minor oozing.",
+      "Rinse the wound thoroughly under cool running tap water for 5 minutes to remove dirt and debris.",
+      "Clean skin around the wound with mild soap and water; avoid getting soap directly in open cut.",
+      "Apply a thin layer of over-the-counter antiseptic cream or ointment if available.",
+      "Cover the cut with a sterile adhesive bandage (plaster) or sterile dressing.",
+      "Change dressing daily or whenever it becomes wet or dirty, and check for signs of infection."
+    ],
+    "when_to_call_emergency": [
+      "Cut is deep, gaping open, or requires stitches",
+      "Wound was caused by rusty metal, animal bite, or dirty object (tetanus risk)",
+      "Redness, heat, pus, or fever develops (signs of infection)"
+    ],
+    "do_not_list": [
+      "Do not scrub deep or dirty wounds harshly",
+      "Do not use hydrogen peroxide or rubbing alcohol directly inside fresh open cuts",
+      "Do not blow on an open wound with your mouth"
+    ],
+    "keywords": [
+      "cut",
+      "cuts",
+      "minor wound",
+      "scrape",
+      "laceration",
+      "bleeding cut",
+      "scratched",
+      "bandage",
+      "plaster"
+    ]
+  },
+  {
+    "id": "shock",
+    "title": "Medical Shock",
+    "severity": "Critical",
+    "icon": "alert-triangle",
+    "short_description": "Emergency stabilization for medical shock (insufficient blood flow to tissues).",
+    "warning": "CRITICAL: Medical shock is a life-threatening state requiring urgent emergency paramedics.",
+    "steps": [
+      "Call 112 immediately\u2014medical shock is a life-threatening medical emergency.",
+      "Lay the person down flat on their back safely.",
+      "Elevate their legs about 12 inches (30 cm) unless spinal, head, or leg injury is suspected.",
+      "Keep the person still and calm. Loosen tight clothing around neck and waist.",
+      "Keep them warm: Cover them with a blanket or coat to preserve body heat.",
+      "Do NOT give them food or water, even if they complain of thirst.",
+      "Monitor breathing and pulse continuously until emergency responders arrive; be prepared for CPR."
+    ],
+    "when_to_call_emergency": [
+      "Pale, cold, clammy skin with rapid shallow breathing",
+      "Weak rapid pulse, confusion, bluish lips or fingernails",
+      "Severe blood loss, severe trauma, or severe allergic reaction"
+    ],
+    "do_not_list": [
+      "Do not give the person anything to eat or drink (risk of aspiration)",
+      "Do not elevate legs if you suspect head, neck, back, or leg fracture",
+      "Do not move the person unnecessarily"
+    ],
+    "keywords": [
+      "shock",
+      "medical shock",
+      "circulatory shock",
+      "clammy skin",
+      "pale skin",
+      "weak pulse",
+      "trauma shock",
+      "hypovolemic"
+    ]
+  },
+  {
+    "id": "headache",
+    "title": "Headache & Migraine",
+    "severity": "Moderate",
+    "icon": "brain",
+    "short_description": "First-aid evaluation and relief guidance for headaches and migraines.",
+    "warning": "Seek emergency care immediately for sudden 'thunderclap' headache, fever with stiff neck, or confusion.",
+    "steps": [
+      "Assess severity: Sudden severe pain or fever with stiff neck requires emergency call 112.",
+      "Rest in a quiet, dark, well-ventilated room with eyes closed.",
+      "Apply a cold compress across your forehead or back of neck for relief.",
+      "Sip water slowly to stay hydrated.",
+      "Avoid bright screens, loud noises, and strong odors.",
+      "Take over-the-counter or prescribed migraine medication early if appropriate."
+    ],
+    "when_to_call_emergency": [
+      "Sudden severe 'thunderclap' headache reaching peak intensity in seconds",
+      "Headache accompanied by stiff neck, high fever, or confusion",
+      "Headache with numbness, weakness, or trouble speaking"
+    ],
+    "do_not_list": [
+      "Do not ignore a sudden severe unmanageable headache",
+      "Do not expose eyes to bright screens or harsh lights during migraine attack"
+    ],
+    "keywords": [
+      "headache",
+      "head pain",
+      "migraine",
+      "head throbbing",
+      "temple pain",
+      "forehead pain",
+      "head hurt"
+    ]
+  },
+  {
+    "id": "nausea-vomiting",
+    "title": "Nausea & Vomiting",
+    "severity": "Moderate",
+    "icon": "activity",
+    "short_description": "First-aid guidance for nausea, vomiting, motion sickness, and food poisoning.",
+    "warning": "Urgent emergency medical care is needed if vomiting blood or dark coffee-ground material.",
+    "steps": [
+      "If vomiting blood or coffee-ground material, call 112 immediately.",
+      "Keep person sitting upright or leaning forward to prevent choking/aspiration.",
+      "Rest stomach for 1-2 hours after vomiting.",
+      "Sip small amounts (teaspoonfuls) of Oral Rehydration Solution (ORS) or electrolyte water every 5-10 minutes.",
+      "Gradually reintroduce bland foods (Bananas, Rice, Applesauce, Toast).",
+      "Avoid solid foods, dairy, caffeine, alcohol, and spicy/fatty meals."
+    ],
+    "when_to_call_emergency": [
+      "Vomiting blood or material resembling dark coffee grounds",
+      "Inability to keep liquids down for more than 24 hours",
+      "Signs of severe dehydration (extreme thirst, dry mouth, no urination, confusion)"
+    ],
+    "do_not_list": [
+      "Do not give large gulps of water quickly\u2014it triggers reflex vomiting",
+      "Do not force person to eat solid food while nauseous"
+    ],
+    "keywords": [
+      "nausea",
+      "vomiting",
+      "vomit",
+      "throwing up",
+      "puking",
+      "nauseous",
+      "sick stomach",
+      "food poisoning",
+      "motion sickness"
+    ]
+  },
+  {
+    "id": "fever",
+    "title": "Fever & Chills",
+    "severity": "Moderate",
+    "icon": "thermometer",
+    "short_description": "Management and first-aid steps for elevated body temperature and chills.",
+    "warning": "Call 112 immediately if fever is accompanied by stiff neck, confusion, or purple/red rash.",
+    "steps": [
+      "Assess for emergency red flags (stiff neck, confusion, unexplained rash). Call 112 if present.",
+      "Rest in a cool, well-ventilated room with lightweight clothing and light blankets.",
+      "Drink plenty of water, clear broth, or electrolyte solutions to prevent dehydration.",
+      "Apply lukewarm damp cloths to forehead, neck, and wrists.",
+      "Take fever-reducing medication (paracetamol or ibuprofen) as directed if needed."
+    ],
+    "when_to_call_emergency": [
+      "Fever with stiff neck, severe headache, confusion, or purple rash",
+      "Fever exceeding 104\u00b0F (40\u00b0C) not coming down with fever reducers",
+      "Fever lasting more than 3 consecutive days"
+    ],
+    "do_not_list": [
+      "Do not use ice-cold baths or alcohol rubs to cool down (can trigger shivers and internal temp spike)",
+      "Do not bundle up in heavy blankets when shivering with fever"
+    ],
+    "keywords": [
+      "fever",
+      "high temperature",
+      "chills",
+      "feverish",
+      "feeling hot",
+      "body temperature",
+      "pyrexia"
+    ]
+  },
+  {
+    "id": "abdominal-pain",
+    "title": "Abdominal & Stomach Pain",
+    "severity": "Moderate",
+    "icon": "circle-alert",
+    "short_description": "First-aid guidance for stomach ache, cramping, gastritis, and appendicitis signs.",
+    "warning": "Call 112 or visit ER immediately for severe lower right pain, rigid stomach, or vomiting blood.",
+    "steps": [
+      "Assess location and intensity: Lower right abdominal pain with fever suggests appendicitis emergency.",
+      "Lie down in a comfortable position (knees slightly bent up can reduce tension).",
+      "Apply warm heating pad to abdomen for mild gas or menstrual cramps.",
+      "Sip warm chamomile or peppermint tea for mild indigestion.",
+      "Avoid eating solid, spicy, or heavy foods until pain subsides."
+    ],
+    "when_to_call_emergency": [
+      "Severe lower right abdominal pain with fever or vomiting (suspected appendicitis)",
+      "Sudden unbearable severe abdominal pain with sweating or fainting",
+      "Abdomen feels hard, rigid, or extremely tender to touch"
+    ],
+    "do_not_list": [
+      "Do not give food, laxatives, or strong painkillers if appendicitis is suspected",
+      "Do not apply direct intense heat over suspected appendicitis"
+    ],
+    "keywords": [
+      "abdominal pain",
+      "stomach ache",
+      "belly pain",
+      "stomach pain",
+      "cramp",
+      "gastritis",
+      "indigestion",
+      "appendix"
+    ]
+  },
+  {
+    "id": "dizziness",
+    "title": "Dizziness & Vertigo",
+    "severity": "Moderate",
+    "icon": "refresh-cw",
+    "short_description": "First-aid evaluation for dizziness, lightheadedness, and room-spinning vertigo.",
+    "warning": "Call 112 immediately if dizziness occurs with facial drooping, arm weakness, or speech difficulty (Stroke FAST).",
+    "steps": [
+      "Check for stroke signs (FAST: Face drooping, Arm weakness, Speech difficulty). Call 112 if present.",
+      "Sit down immediately or lie flat on a stable surface to prevent falls.",
+      "Keep head still and focus on a fixed point if experiencing room-spinning vertigo.",
+      "Sip water or electrolyte fluids slowly if lightheaded from heat or dehydration.",
+      "Stand up very slowly when feeling better."
+    ],
+    "when_to_call_emergency": [
+      "Dizziness with facial drooping, arm weakness, or slurred speech (Stroke)",
+      "Dizziness accompanied by chest pain or fainting",
+      "Dizziness following head trauma"
+    ],
+    "do_not_list": [
+      "Do not try to walk around while feeling dizzy or experiencing vertigo",
+      "Do not make sudden head or posture changes"
+    ],
+    "keywords": [
+      "dizziness",
+      "dizzy",
+      "vertigo",
+      "lightheaded",
+      "spinning head",
+      "unsteady",
+      "lightheadedness"
+    ]
+  },
+  {
+    "id": "hand-pain",
+    "title": "Hand & Arm Pain",
+    "severity": "Moderate",
+    "icon": "bone",
+    "short_description": "First-aid guidance and assessment for hand, wrist, finger, and arm pain.",
+    "warning": "Seek emergency care immediately if arm pain occurs with chest tightness, or if there is a visible open bone fracture.",
+    "steps": [
+      "Check for emergency red flags (chest tightness/sweating or open fracture). Call 112 if present.",
+      "Immobilize and support the injured hand/arm with a cushion, pillow, or sling.",
+      "Apply a cold compress wrapped in a cloth for 15-20 minutes to reduce swelling.",
+      "Elevate hand above heart level if swelling occurs.",
+      "Rest from repetitive tasks (typing, heavy lifting, sports)."
+    ],
+    "when_to_call_emergency": [
+      "Sudden arm pain with chest pressure, breathlessness, or sweating (Heart Attack warning)",
+      "Bone protruding through skin or severe uncontrollable bleeding",
+      "Visibly deformed bone or complete inability to move fingers/wrist"
+    ],
+    "do_not_list": [
+      "Do not try to forcefully straighten or realign a deformed bone or dislodged finger",
+      "Do not apply ice directly to bare skin"
+    ],
+    "keywords": [
+      "hand pain",
+      "arm pain",
+      "wrist pain",
+      "finger pain",
+      "hand hurt",
+      "pain in hand",
+      "pain in arm",
+      "wrist hurt",
+      "thumb pain",
+      "knuckle pain",
+      "palm pain",
+      "elbow pain"
+    ]
+  },
+  {
+    "id": "leg-pain",
+    "title": "Leg & Foot Pain Guidance",
+    "severity": "MODERATE",
+    "icon": "\ud83e\uddb5",
+    "short_description": "Evaluation and first-aid for leg, foot, knee, calf, or ankle pain.",
+    "warning": "Inability to bear weight after trauma or sudden severe swelling with warmth/redness requires urgent medical evaluation.",
+    "steps": [
+      "Rest the affected leg and avoid putting weight on it.",
+      "Apply ice packs wrapped in cloth for 15-20 minutes to reduce acute swelling.",
+      "Wrap ankle or leg with an elastic bandage for compression.",
+      "Elevate leg above heart level when lying down.",
+      "If severe pain or inability to walk persists, seek medical evaluation."
+    ],
+    "when_to_call_emergency": [
+      "Inability to bear any weight after a fall or high-impact trauma",
+      "Visible bone deformity, open wound, or severe numbness",
+      "Sudden deep leg swelling accompanied by warmth and redness (suspected DVT)"
+    ],
+    "do_not_list": [
+      "Do NOT force walking on a severely injured leg",
+      "Do NOT apply direct ice on bare skin",
+      "Do NOT attempt to realign or pop deformed bones back in place"
+    ],
+    "keywords": [
+      "leg pain",
+      "foot pain",
+      "knee pain",
+      "ankle pain",
+      "calf pain",
+      "thigh pain",
+      "leg hurt",
+      "twisted ankle"
+    ]
+  },
+  {
+    "id": "joint-back-pain",
+    "title": "Joint & Back Pain Care",
+    "severity": "MODERATE",
+    "icon": "\ud83e\uddb4",
+    "short_description": "First-aid care for acute back strain, spinal discomfort, and joint swelling.",
+    "warning": "Back pain with numbness in legs, loss of bowel/bladder control, or following high-impact trauma requires emergency medical attention.",
+    "steps": [
+      "Rest in a comfortable position, such as lying flat with knees elevated by pillows.",
+      "Apply ice to acute joint injuries or heat to muscle spasms after 48 hours.",
+      "Avoid heavy lifting, twisting, or sudden bending.",
+      "Seek medical evaluation if pain radiates or persists."
+    ],
+    "when_to_call_emergency": [
+      "Loss of sensation or numbness in legs or groin",
+      "Inability to control bowel or bladder function",
+      "Back pain following a major car accident, fall from height, or severe impact"
+    ],
+    "do_not_list": [
+      "Do NOT move a person with suspected spinal injury",
+      "Do NOT lift heavy objects during acute back pain flare-ups"
+    ],
+    "keywords": [
+      "back pain",
+      "joint pain",
+      "spine pain",
+      "lumbar pain",
+      "joint swelling",
+      "back hurt"
+    ]
+  }
+]
