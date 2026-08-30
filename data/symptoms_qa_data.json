@@ -1,0 +1,860 @@
+[
+  {
+    "id": "headache",
+    "symptom_name": "Headache",
+    "keywords": [
+      "headache",
+      "head pain",
+      "migraine",
+      "head throbbing",
+      "pain in head",
+      "head hurt",
+      "temple pain",
+      "forehead pain"
+    ],
+    "initial_question": "What kind of headache are you suffering from?",
+    "options": [
+      {
+        "id": "thunderclap",
+        "label": "Sudden Excruciating 'Thunderclap' or Stiff Neck with Fever",
+        "description": "Sudden severe pain reaching maximum intensity within seconds, or headache with neck stiffness, fever, or confusion.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Thunderclap Headache / Suspected Meningitis or Brain Bleed",
+        "warning": "\ud83d\udea8 CRITICAL EMERGENCY: A sudden 'thunderclap' headache or headache with stiff neck/fever requires IMMEDIATE emergency medical care.",
+        "first_aid_steps": [
+          "Call 112 (or local emergency medical services) immediately.",
+          "Keep the person lying down in a quiet, dark, and calm environment.",
+          "Do not give any pain medication, food, or drinks until evaluated by paramedics.",
+          "Monitor responsiveness, alertness, and breathing closely."
+        ],
+        "when_to_see_doctor": "Immediate emergency room / 112 dispatch required."
+      },
+      {
+        "id": "migraine",
+        "label": "Throbbing Pain on One Side with Light/Sound Sensitivity or Nausea",
+        "description": "Pulsating or throbbing pain usually on one side of the head, often accompanied by nausea, vomiting, or visual disturbances (aura).",
+        "severity": "Moderate",
+        "is_emergency": false,
+        "subtype_name": "Migraine Headache",
+        "warning": "Migraines can be debilitating. Rest in a dark, quiet environment. (Note: Women are 3x more likely to experience hormonal migraines).",
+        "first_aid_steps": [
+          "Rest in a quiet, dark, well-ventilated room with eyes closed.",
+          "Apply a cool damp cloth or cold compress across your forehead or back of neck.",
+          "Sip water slowly to stay hydrated.",
+          "If prescribed, take migraine relief medication early during the attack.",
+          "Avoid bright screens, loud noises, and strong odors."
+        ],
+        "when_to_see_doctor": "Consult a doctor if migraines recur frequently, increase in severity, or fail to respond to standard medications."
+      },
+      {
+        "id": "tension",
+        "label": "Dull Aching Pressure Like a Tight Band Around Forehead or Neck",
+        "description": "Constant dull ache felt on both sides of head, forehead, or back of neck, often caused by stress, posture, or fatigue.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Tension-Type Headache",
+        "warning": "Tension headaches are common and usually resolve with rest, relaxation, and hydration.",
+        "first_aid_steps": [
+          "Apply a warm compress or heating pad to neck and shoulder muscles to ease muscle tension.",
+          "Perform gentle neck stretches and shoulder rolls.",
+          "Drink plenty of fresh water to ensure hydration.",
+          "Over-the-counter pain relievers (like paracetamol or ibuprofen) may help if tolerated.",
+          "Take a short break from computer screens and practice relaxed deep breathing."
+        ],
+        "when_to_see_doctor": "See a primary physician if tension headaches occur more than 2-3 times a week."
+      },
+      {
+        "id": "cluster",
+        "label": "Severe Sharp Piercing Pain Around One Eye with Eye Watering",
+        "description": "Intense burning or piercing pain around one eye or temple, accompanied by eye redness, tearing, or drooping eyelid.",
+        "severity": "High",
+        "is_emergency": false,
+        "subtype_name": "Cluster Headache",
+        "warning": "Cluster headaches produce intense localized pain. Professional medical evaluation is recommended.",
+        "first_aid_steps": [
+          "Sit upright in a comfortable chair\u2014avoid lying down as it can worsen cluster pain.",
+          "Breathe deeply in fresh, cool air.",
+          "Apply a cool towel over the affected eye and temple.",
+          "Contact your doctor for high-flow oxygen therapy or specialized prescription treatments."
+        ],
+        "when_to_see_doctor": "Requires evaluation by a neurologist or physician for targeted cluster headache preventive therapy."
+      },
+      {
+        "id": "sinus",
+        "label": "Deep Facial Pressure Behind Cheeks, Forehead, & Nasal Congestion",
+        "description": "Deep, constant pain around cheekbones, forehead, or bridge of nose, worsening when bending forward, accompanied by nasal discharge.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Sinus Headache",
+        "warning": "Sinus headaches are associated with sinus congestion or infection.",
+        "first_aid_steps": [
+          "Inhale warm steam from a bowl of hot water or shower to open nasal passages.",
+          "Apply warm moist compresses around nose, cheeks, and eyes.",
+          "Use saline nasal spray to clear congestion.",
+          "Stay hydrated with warm fluids like tea or clear broth."
+        ],
+        "when_to_see_doctor": "See a doctor if sinus pain lasts over 10 days or is accompanied by high fever and purulent nasal discharge."
+      }
+    ]
+  },
+  {
+    "id": "chest-pain",
+    "symptom_name": "Chest Pain",
+    "keywords": [
+      "chest pain",
+      "chest tightness",
+      "chest pressure",
+      "heart pain",
+      "pain in chest",
+      "angina",
+      "burning chest"
+    ],
+    "initial_question": "What type of chest pain or chest discomfort are you having?",
+    "options": [
+      {
+        "id": "cardiac",
+        "label": "Heavy Squeezing Pressure Spreading to Arm/Jaw with Sweating & Breathlessness",
+        "description": "Crushing pressure or pain in center of chest, radiating to left arm, neck, jaw, or back, with shortness of breath or cold sweat.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Cardiac Emergency / Suspected Heart Attack",
+        "warning": "\ud83d\udea8 LIFE-THREATENING EMERGENCY: Suspected heart attack requires immediate emergency medical dispatch. (Note for Women: Female heart attack symptoms often present as severe fatigue, shortness of breath, nausea, or jaw/back pain without sharp chest pain).",
+        "first_aid_steps": [
+          "Call 112 (or emergency services) immediately.",
+          "Help the person sit down in a comfortable position (leaning back with knees bent) to relieve strain on the heart.",
+          "Loosen tight clothing around neck and chest.",
+          "If conscious and not allergic, administer 300mg aspirin to chew slowly (if recommended by emergency dispatcher).",
+          "Be prepared to perform CPR if the person loses consciousness and stops normal breathing."
+        ],
+        "when_to_see_doctor": "Immediate 112 ambulance response required."
+      },
+      {
+        "id": "pleuritic",
+        "label": "Sharp Pain That Gets Worse When Breathing Deeply or Coughing",
+        "description": "Sharp knife-like pain in side of chest aggravated by deep inhalation, coughing, or laughing.",
+        "severity": "High",
+        "is_emergency": false,
+        "subtype_name": "Pleuritic Chest Pain / Possible Pulmonary Issue",
+        "warning": "Pleuritic chest pain requires medical investigation to check for pneumonia, pleurisy, or pulmonary embolism.",
+        "first_aid_steps": [
+          "Sit in a comfortable upright position.",
+          "Take shallow, gentle breaths rather than deep forced inhalations.",
+          "Rest calmly and avoid physical strain.",
+          "Seek urgent medical evaluation at a hospital or urgent care clinic."
+        ],
+        "when_to_see_doctor": "Seek medical evaluation immediately, especially if accompanied by fever, cough, or leg swelling."
+      },
+      {
+        "id": "reflux",
+        "label": "Burning Sensation Behind Breastbone After Eating / Worse When Lying Down",
+        "description": "Burning pain rising into throat, often after heavy or spicy meals, improving with antacids.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Acid Reflux / Heartburn",
+        "warning": "Heartburn is common but can mimic chest discomfort. Ensure non-cardiac origin.",
+        "first_aid_steps": [
+          "Sit upright\u2014do not lie down flat immediately after eating.",
+          "Sip water or chew non-mint gum to help neutralize stomach acid.",
+          "Take over-the-counter antacid medication if appropriate.",
+          "Loosen tight belts or waistbands."
+        ],
+        "when_to_see_doctor": "Consult a doctor if heartburn occurs frequently or swallowing becomes painful."
+      },
+      {
+        "id": "musculoskeletal",
+        "label": "Aching Pain That Gets Worse When Pressing on Chest Wall or Moving Torso",
+        "description": "Localized tenderness when pushing on ribs or sternum, often triggered by heavy lifting or physical strain.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Chest Wall Muscle Strain / Costochondritis",
+        "warning": "Muscle strain in chest is non-cardiac but should be evaluated if pain changes.",
+        "first_aid_steps": [
+          "Rest and avoid heavy lifting or torso twisting.",
+          "Apply a cold pack wrapped in a cloth to tender chest area for 15 minutes.",
+          "Take mild over-the-counter pain relievers if tolerated."
+        ],
+        "when_to_see_doctor": "See a doctor if chest pain is persistent or fails to improve within a few days."
+      }
+    ]
+  },
+  {
+    "id": "abdominal-pain",
+    "symptom_name": "Stomach & Abdominal Pain",
+    "keywords": [
+      "stomach ache",
+      "stomach pain",
+      "abdominal pain",
+      "belly ache",
+      "belly pain",
+      "cramps",
+      "gut pain",
+      "pelvic pain"
+    ],
+    "initial_question": "Where and what type of stomach/abdominal pain are you experiencing?",
+    "options": [
+      {
+        "id": "appendicitis",
+        "label": "Sharp Pain Starting Near Navel and Moving to Lower Right Side",
+        "description": "Severe localized pain in lower right quadrant of abdomen, getting worse with walking or coughing, with low fever and loss of appetite.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Suspected Appendicitis (Urgent Abdomen)",
+        "warning": "\ud83d\udea8 URGENT MEDICAL EMERGENCY: Suspected appendicitis requires prompt surgical evaluation.",
+        "first_aid_steps": [
+          "Go to the emergency department or call 112 immediately.",
+          "Do NOT give anything to eat or drink (NPO status required for potential surgery).",
+          "Do NOT apply heat pads or give laxatives, as this could cause appendix rupture.",
+          "Keep the person resting quietly in a comfortable posture with knees drawn up."
+        ],
+        "when_to_see_doctor": "Immediate emergency department evaluation required."
+      },
+      {
+        "id": "pelvic_female",
+        "gender_target": "female",
+        "label": "Severe Lower Pelvic / Cramping Pain (Female Health Alert)",
+        "description": "Sharp or cramping pain in lower pelvic region, potentially related to ectopic pregnancy, ovarian cyst, or severe menstrual dysmenorrhea.",
+        "severity": "High",
+        "is_emergency": true,
+        "subtype_name": "Acute Pelvic Pain / Gynecological Medical Alert",
+        "warning": "\ud83d\udea8 FEMALE HEALTH ALERT: Sudden severe lower pelvic pain with dizziness or heavy vaginal bleeding can indicate an ectopic pregnancy rupture or ovarian torsion.",
+        "first_aid_steps": [
+          "If accompanied by dizziness, faintness, or missed period, call 112 or visit Emergency Department immediately.",
+          "Rest flat with legs slightly elevated.",
+          "Apply a gentle warm hot-water bottle to lower abdomen if non-acute menstrual cramping is suspected.",
+          "Do not ingest heavy food until evaluated by a doctor."
+        ],
+        "when_to_see_doctor": "Immediate ER or Gynecologist evaluation required for acute severe pelvic pain."
+      },
+      {
+        "id": "groin_male",
+        "gender_target": "male",
+        "label": "Sudden Severe Groin or Testicular Pain Radiating to Lower Abdomen (Male Health Alert)",
+        "description": "Sudden agonizing pain in scrotum, groin, or lower abdomen, with swelling or nausea.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Acute Groin / Suspected Testicular Torsion or Inguinal Hernia",
+        "warning": "\ud83d\udea8 MALE MEDICAL EMERGENCY: Testicular torsion requires emergency surgery within 6 hours to prevent tissue damage.",
+        "first_aid_steps": [
+          "Go to the nearest Hospital Emergency Room immediately or call 112.",
+          "Do not delay seeking emergency medical attention.",
+          "Keep the person lying down and supported with ice pack over underwear if tolerated."
+        ],
+        "when_to_see_doctor": "Immediate ER surgical evaluation required within hours."
+      },
+      {
+        "id": "gastritis",
+        "label": "Burning Pain in Upper Stomach with Indigestion or Nausea",
+        "description": "Gnawing or burning ache in upper abdomen, feeling worse or better after eating food.",
+        "severity": "Moderate",
+        "is_emergency": false,
+        "subtype_name": "Gastritis / Dyspepsia",
+        "warning": "Upper stomach burning is often linked to gastric inflammation or stomach acid irritation.",
+        "first_aid_steps": [
+          "Eat small, bland meals (toast, rice, applesauce) and avoid spicy, acidic, or fatty foods.",
+          "Avoid alcohol, caffeine, and NSAID pain relievers (like aspirin/ibuprofen).",
+          "Sip clear fluids slowly to stay hydrated.",
+          "Consider over-the-counter antacids."
+        ],
+        "when_to_see_doctor": "See a physician if stomach pain persists over 1 week or if stool appears dark/tarry."
+      },
+      {
+        "id": "cramping",
+        "label": "Wave-like Cramping Across Abdomen with Diarrhea or Gas",
+        "description": "Diffused abdominal cramping with bloating, gurgling, or watery stools, usually due to stomach flu or food issues.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Gastroenteritis / Intestinal Cramping",
+        "warning": "Focus on rehydration and resting the digestive tract.",
+        "first_aid_steps": [
+          "Sip oral rehydration solutions (ORS), clear broths, or electrolyte drinks to replace lost fluids.",
+          "Rest quietly with a warm water bottle placed gently on the stomach.",
+          "Follow the BRAT diet (Bananas, Rice, Applesauce, Toast) when ready to eat."
+        ],
+        "when_to_see_doctor": "Consult a doctor if high fever, severe dehydration, or persistent bloody diarrhea occurs."
+      },
+      {
+        "id": "radiating_severe",
+        "label": "Unbearable Radiating Pain from Side to Lower Back / Groin",
+        "description": "Sudden intense flank pain coming in waves, radiating from back to lower abdomen/groin, often with blood in urine.",
+        "severity": "High",
+        "is_emergency": false,
+        "subtype_name": "Suspected Kidney Stone / Renal Colic",
+        "warning": "Renal colic pain is extremely intense and requires prompt medical diagnosis and pain management.",
+        "first_aid_steps": [
+          "Seek urgent care or emergency room evaluation for diagnostic imaging and pain relief.",
+          "Drink plenty of water if able to swallow and not vomiting severely.",
+          "Apply warm compress to the lower back side area."
+        ],
+        "when_to_see_doctor": "Seek emergency medical evaluation for unbearable flank pain or inability to pass urine."
+      }
+    ]
+  },
+  {
+    "id": "fever",
+    "symptom_name": "Fever & Chills",
+    "keywords": [
+      "fever",
+      "high temperature",
+      "chills",
+      "feverish",
+      "body heat",
+      "sweating fever",
+      "shivering"
+    ],
+    "initial_question": "What symptoms accompany your fever?",
+    "options": [
+      {
+        "id": "fever_redflag",
+        "label": "High Fever (>103\u00b0F/39.4\u00b0C) with Stiff Neck, Rash, or Confusion",
+        "description": "High temperature accompanied by inability to bend chin to chest, confusion, extreme drowsiness, or non-fading purple skin spots.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "High Risk Fever / Suspected Severe Infection or Meningitis",
+        "warning": "\ud83d\udea8 CRITICAL WARNING: Fever combined with neck stiffness, confusion, or purple rash is a medical emergency.",
+        "first_aid_steps": [
+          "Call 112 or transport immediately to nearest emergency medical center.",
+          "Keep the person calm, lying flat, and uncrowded.",
+          "Apply lukewarm (not cold) damp cloths to forehead and neck.",
+          "Do not submerge in ice baths."
+        ],
+        "when_to_see_doctor": "Immediate 112 emergency care."
+      },
+      {
+        "id": "fever_respiratory",
+        "label": "Fever with Cough, Sore Throat, Body Aches, & Fatigue",
+        "description": "Moderate to high temperature with common viral/flu symptoms like runny nose, body chills, and dry cough.",
+        "severity": "Moderate",
+        "is_emergency": false,
+        "subtype_name": "Viral Fever / Influenza-like Illness",
+        "warning": "Rest and continuous fluids are essential for recovery.",
+        "first_aid_steps": [
+          "Get plenty of bed rest.",
+          "Drink abundant fluids (water, warm herbal tea, clear soups) to prevent dehydration.",
+          "Take over-the-counter fever reducers (acetaminophen/paracetamol or ibuprofen) as directed.",
+          "Dress in lightweight clothing and use thin blankets."
+        ],
+        "when_to_see_doctor": "Seek medical advice if fever lasts more than 3 days or causes shortness of breath."
+      },
+      {
+        "id": "fever_mild",
+        "label": "Mild Low-Grade Fever (<101\u00b0F/38.3\u00b0C) with Slight Shivering",
+        "description": "Slight body temperature elevation with mild fatigue, resolving with basic rest.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Low-Grade Fever",
+        "warning": "Monitor body temperature every few hours.",
+        "first_aid_steps": [
+          "Rest comfortably in a moderately cooled room.",
+          "Sip room-temperature water continuously.",
+          "Monitor body temperature using a digital thermometer."
+        ],
+        "when_to_see_doctor": "Consult a doctor if fever rises above 102\u00b0F (38.9\u00b0C) or lasts over 72 hours."
+      }
+    ]
+  },
+  {
+    "id": "breathing-difficulty",
+    "symptom_name": "Shortness of Breath",
+    "keywords": [
+      "shortness of breath",
+      "breathing issue",
+      "cannot breathe",
+      "gasping",
+      "breathless",
+      "wheezing",
+      "hard to breathe"
+    ],
+    "initial_question": "What best describes your breathing difficulty?",
+    "options": [
+      {
+        "id": "breathing_emergency",
+        "label": "Severe Gasping for Air, Inability to Speak Full Words, or Blue Lips",
+        "description": "Acute severe respiratory distress, struggles to speak a few words, bluish tint on lips/fingernails, or feeling suffocation.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Acute Respiratory Distress / Breathing Emergency",
+        "warning": "\ud83d\udea8 CRITICAL EMERGENCY: Severe difficulty breathing requires immediate emergency paramedic assistance.",
+        "first_aid_steps": [
+          "Call 112 immediately.",
+          "Sit the person upright in a comfortable position\u2014leaning forward resting arms on a table can help ease breathing.",
+          "Loosen collars, neckties, belts, and tight clothing around waist/chest.",
+          "Keep surrounding area quiet and clear of crowding people.",
+          "Be prepared to perform CPR compressions if breathing stops."
+        ],
+        "when_to_see_doctor": "Immediate 112 emergency response."
+      },
+      {
+        "id": "asthma_wheezing",
+        "label": "High-Pitched Wheezing Sound with Chest Tightness",
+        "description": "Whistling sound when breathing out, tight feeling in chest, often associated with asthma or allergic trigger.",
+        "severity": "High",
+        "is_emergency": false,
+        "subtype_name": "Asthma Exacerbation / Bronchospasm",
+        "warning": "Use rescue inhaler immediately if available.",
+        "first_aid_steps": [
+          "Sit upright calmly\u2014do not lie down.",
+          "Help the person use their quick-relief rescue inhaler (Albuterol) with spacer (1 puff every 30-60 seconds, up to 4 puffs).",
+          "Encourage slow, deep breathing through the nose and out through pursed lips.",
+          "If no improvement after inhaler use, call emergency services immediately."
+        ],
+        "when_to_see_doctor": "Seek emergency care if rescue inhaler does not relieve breathing difficulty within 5-10 minutes."
+      },
+      {
+        "id": "gradual_breathlessness",
+        "label": "Mild Breathlessness After Exertion or with Stuffy Nose",
+        "description": "Feeling slightly out of breath after walking up stairs or with nasal congestion during a cold.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Exertional / Cold-Related Breathlessness",
+        "warning": "Rest until normal breathing rhythm is restored.",
+        "first_aid_steps": [
+          "Stop physical activity and sit in a comfortable upright position.",
+          "Practice steady pursed-lip breathing.",
+          "Ventilate the room with fresh air."
+        ],
+        "when_to_see_doctor": "See a physician if breathlessness occurs with minimal effort or during sleep."
+      }
+    ]
+  },
+  {
+    "id": "dizziness",
+    "symptom_name": "Dizziness & Vertigo",
+    "keywords": [
+      "dizziness",
+      "dizzy",
+      "vertigo",
+      "spinning head",
+      "lightheaded",
+      "feeling faint",
+      "room spinning",
+      "unsteady"
+    ],
+    "initial_question": "Which type of dizziness are you experiencing?",
+    "options": [
+      {
+        "id": "stroke_alert",
+        "label": "Dizziness with Sudden Face Drooping, Arm Weakness, or Slurred Speech (F.A.S.T.)",
+        "description": "Sudden onset of dizziness combined with weakness on one side of body, facial asymmetry, or difficulty speaking.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Suspected Stroke / F.A.S.T. Emergency",
+        "warning": "\ud83d\udea8 CRITICAL EMERGENCY: F.A.S.T. stroke warning signs require immediate emergency hospital care.",
+        "first_aid_steps": [
+          "Call 112 immediately and inform dispatcher of suspected stroke.",
+          "Note the exact time symptoms first started.",
+          "Lay the person down safely with head slightly elevated.",
+          "Do not give any food, water, or medication."
+        ],
+        "when_to_see_doctor": "Immediate 112 emergency call."
+      },
+      {
+        "id": "vertigo",
+        "label": "Sensation That the Room is Spinning Round and Round",
+        "description": "False sense of movement or environment spinning, often aggravated by moving head position, with nausea.",
+        "severity": "Moderate",
+        "is_emergency": false,
+        "subtype_name": "Vertigo (Inner Ear / Vestibular System)",
+        "warning": "Avoid sudden head movements to prevent falls.",
+        "first_aid_steps": [
+          "Sit or lie down immediately on a stable surface.",
+          "Keep your head still and focus on a fixed stationary object.",
+          "Avoid bright lights, sudden posture changes, and reading.",
+          "Avoid driving or operating machinery while experiencing vertigo."
+        ],
+        "when_to_see_doctor": "Consult an ENT or doctor for vestibular evaluation if spinning recurs."
+      },
+      {
+        "id": "lightheaded",
+        "label": "Feeling Faint or Woozy Upon Standing Up Rapidly",
+        "description": "Brief wooziness or dark vision when standing up quickly, usually caused by temporary blood pressure dip or mild dehydration.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Orthostatic Lightheadedness / Mild Dehydration",
+        "warning": "Sit back down if feeling faint.",
+        "first_aid_steps": [
+          "Sit down or lie flat with legs slightly elevated.",
+          "Sip 1-2 glasses of cool water to replenish fluids.",
+          "Stand up gradually in stages (sit on edge of bed first before standing)."
+        ],
+        "when_to_see_doctor": "See a doctor if lightheadedness leads to frequent fainting episodes."
+      }
+    ]
+  },
+  {
+    "id": "skin-rash",
+    "symptom_name": "Skin Rash & Itching",
+    "keywords": [
+      "rash",
+      "skin rash",
+      "itching",
+      "hives",
+      "welts",
+      "skin redness",
+      "allergy rash",
+      "spots on skin"
+    ],
+    "initial_question": "What kind of skin rash or skin reaction do you have?",
+    "options": [
+      {
+        "id": "anaphylaxis_rash",
+        "label": "Spreading Hives with Facial Swelling, Throat Tightness, or Gasping",
+        "description": "Rapidly spreading red itchy welts accompanied by swelling of lips, tongue, or difficulty breathing.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Anaphylactic Reaction / Severe Allergy Emergency",
+        "warning": "\ud83d\udea8 CRITICAL EMERGENCY: Anaphylaxis is life-threatening. Use EpiPen immediately if available.",
+        "first_aid_steps": [
+          "Call 112 immediately.",
+          "Administer Epinephrine Auto-Injector (EpiPen) into outer thigh if person has one.",
+          "Lay person flat on back (or sit slightly up if breathing is hard).",
+          "Stay with person and monitor breathing until help arrives."
+        ],
+        "when_to_see_doctor": "Immediate emergency room / 112 dispatch."
+      },
+      {
+        "id": "allergic_hives",
+        "label": "Red Raised Itchy Welts (Hives) Without Breathing Problems",
+        "description": "Sudden itchy red bumps or hives across skin caused by food, insect sting, or mild allergy, without facial swelling.",
+        "severity": "Moderate",
+        "is_emergency": false,
+        "subtype_name": "Urticaria / Allergic Hives",
+        "warning": "Monitor closely for any signs of breathing difficulty or lip swelling.",
+        "first_aid_steps": [
+          "Apply cool damp compresses to soothe itchy skin.",
+          "Take an over-the-counter oral antihistamine (like cetirizine or diphenhydramine) if safe.",
+          "Avoid hot showers and scratchy clothing."
+        ],
+        "when_to_see_doctor": "Seek emergency care immediately if facial swelling or breathing trouble develops."
+      },
+      {
+        "id": "contact_dermatitis",
+        "label": "Localized Red Itchy Rash After Touching Plant, Soap, or Material",
+        "description": "Red itchy rash limited to the specific skin area that touched an irritant or allergen (poisons, detergents, jewelry).",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Contact Dermatitis",
+        "warning": "Wash affected skin thoroughly to remove lingering irritants.",
+        "first_aid_steps": [
+          "Wash the affected skin gently with mild soap and cool water.",
+          "Apply over-the-counter hydrocortisone cream or calamine lotion.",
+          "Avoid scratching to prevent secondary skin infection."
+        ],
+        "when_to_see_doctor": "See a doctor if rash spreads widely, blisters, or shows signs of infection (pus, warmth)."
+      }
+    ]
+  },
+  {
+    "id": "cough-throat",
+    "symptom_name": "Cough & Throat Pain",
+    "keywords": [
+      "cough",
+      "coughing",
+      "sore throat",
+      "throat pain",
+      "coughing blood",
+      "stridor",
+      "scratchy throat"
+    ],
+    "initial_question": "What type of cough or throat issue are you experiencing?",
+    "options": [
+      {
+        "id": "hemoptysis",
+        "label": "Coughing Up Bright Red Blood or Blood-Tinged Mucus",
+        "description": "Expelling blood when coughing, which can signal serious airway or lung vascular conditions.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Hemoptysis / Coughing Blood Emergency",
+        "warning": "\ud83d\udea8 CRITICAL WARNING: Coughing up blood requires immediate hospital emergency evaluation.",
+        "first_aid_steps": [
+          "Call 112 or go to the nearest hospital emergency room immediately.",
+          "Sit upright leaning slightly forward to prevent blood aspiration.",
+          "Keep calm and avoid physical exertion.",
+          "Save coughing sample in a tissue if possible for medical inspection."
+        ],
+        "when_to_see_doctor": "Immediate 112 emergency care."
+      },
+      {
+        "id": "sore_throat",
+        "label": "Severe Sore Throat with Painful Swallowing & White Spots on Tonsils",
+        "description": "Intense throat inflammation, pain when swallowing food/water, swollen neck glands, and high fever.",
+        "severity": "Moderate",
+        "is_emergency": false,
+        "subtype_name": "Severe Sore Throat / Suspected Strep or Tonsillitis",
+        "warning": "May require prescription antibiotics if bacterial infection is confirmed.",
+        "first_aid_steps": [
+          "Gargle with warm salt water (1/2 tsp salt in 1 cup warm water) 3-4 times daily.",
+          "Sip warm teas with honey or suck on throat lozenges.",
+          "Take over-the-counter pain relievers for throat pain if tolerated.",
+          "Stay well hydrated with soft liquids."
+        ],
+        "when_to_see_doctor": "See a doctor if swallowing liquids is impossible or fever exceeds 102\u00b0F (38.9\u00b0C)."
+      },
+      {
+        "id": "dry_cough",
+        "label": "Dry Tickly Cough with Mild Throat Irritation",
+        "description": "Irritating dry cough without mucus, commonly associated with viral colds or dry air.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Dry Cough / Viral Irritation",
+        "warning": "Keep throat moist with warm fluids.",
+        "first_aid_steps": [
+          "Drink warm fluids like lemon honey tea or warm water.",
+          "Use a room cool-mist humidifier.",
+          "Avoid smoke, dust, and cold dry air."
+        ],
+        "when_to_see_doctor": "See a doctor if dry cough lasts longer than 3 weeks."
+      }
+    ]
+  },
+  {
+    "id": "nausea-vomiting",
+    "symptom_name": "Nausea & Vomiting",
+    "keywords": [
+      "nausea",
+      "vomiting",
+      "throw up",
+      "puking",
+      "feeling sick",
+      "stomach upside down",
+      "vomit",
+      "morning sickness"
+    ],
+    "initial_question": "What symptoms accompany your nausea or vomiting?",
+    "options": [
+      {
+        "id": "vomit_blood",
+        "label": "Vomiting Bright Red Blood or Dark 'Coffee-Ground' Material",
+        "description": "Vomiting containing fresh red blood or dark brown/black digested blood flakes, indicating upper GI bleeding.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Upper GI Bleeding Emergency",
+        "warning": "\ud83d\udea8 CRITICAL EMERGENCY: Vomiting blood or coffee-ground material requires immediate emergency care.",
+        "first_aid_steps": [
+          "Call 112 or transport to emergency room immediately.",
+          "Keep person sitting upright or lying on their side (recovery position) to prevent choking/aspiration.",
+          "Do not give any food, water, or oral medications."
+        ],
+        "when_to_see_doctor": "Immediate 112 emergency response."
+      },
+      {
+        "id": "food_poisoning",
+        "label": "Sudden Repeated Vomiting & Diarrhea After Eating Questionable Food",
+        "description": "Acute stomach upset, vomiting, watery stools, and abdominal cramps within hours of eating contaminated food.",
+        "severity": "Moderate",
+        "is_emergency": false,
+        "subtype_name": "Food Poisoning / Acute Gastroenteritis",
+        "warning": "Prevent dehydration by taking small frequent sips of fluids.",
+        "first_aid_steps": [
+          "Let the stomach rest for 1-2 hours after vomiting stops.",
+          "Sip small amounts (teaspoon at a time) of Oral Rehydration Solution (ORS) or electrolyte water.",
+          "Gradually introduce bland foods like crackers, toast, or bananas.",
+          "Rest in a cool, quiet room."
+        ],
+        "when_to_see_doctor": "Consult a doctor if unable to keep any fluids down for 24 hours or if signs of severe dehydration appear."
+      },
+      {
+        "id": "motion_morning",
+        "label": "Mild Nausea from Travel, Motion, or Morning Sickness (Female/Pregnancy Alert)",
+        "description": "Queasiness related to movement, pregnancy, or temporary mild indigestion.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Motion Sickness / Morning Sickness",
+        "warning": "Fresh air, ginger, and small bland meals help settle pregnancy or motion nausea.",
+        "first_aid_steps": [
+          "Get fresh air and look at a fixed horizon point.",
+          "Sip ginger tea, ginger ale, or peppermint tea.",
+          "Eat small frequent dry snacks (like crackers) before getting out of bed for morning sickness.",
+          "Avoid heavy, greasy, or strong-smelling foods."
+        ],
+        "when_to_see_doctor": "Consult a physician if hyperemesis gravidarum (severe pregnancy vomiting preventing fluid retention) develops."
+      }
+    ]
+  },
+  {
+    "id": "joint-back-pain",
+    "symptom_name": "Joint & Back Pain",
+    "keywords": [
+      "back pain",
+      "joint pain",
+      "knee pain",
+      "lower back pain",
+      "spine pain",
+      "swollen joint",
+      "stiff joint"
+    ],
+    "initial_question": "What kind of joint or back pain are you experiencing?",
+    "options": [
+      {
+        "id": "cauda_equina",
+        "label": "Severe Low Back Pain with Groin Numbness or Loss of Bowel/Bladder Control",
+        "description": "Severe lower spine pain combined with loss of sensation in groin/buttocks ('saddle anesthesia') or sudden incontinence.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Suspected Cauda Equina Syndrome (Spinal Emergency)",
+        "warning": "\ud83d\udea8 CRITICAL EMERGENCY: Cauda Equina syndrome is a surgical spinal emergency. Immediate care needed.",
+        "first_aid_steps": [
+          "Call 112 or transport to nearest emergency trauma center immediately.",
+          "Keep the person lying flat and still. Avoid twisting or bending the spine.",
+          "Do not give any food or drink in case emergency spinal surgery is required."
+        ],
+        "when_to_see_doctor": "Immediate 112 emergency response."
+      },
+      {
+        "id": "septic_gout",
+        "label": "Sudden Intensely Painful, Red, Hot, & Swollen Single Joint (e.g. Toe/Knee)",
+        "description": "Acute onset of extreme joint tenderness, swelling, redness, and heat in a single joint, unable to bear weight.",
+        "severity": "High",
+        "is_emergency": false,
+        "subtype_name": "Suspected Acute Gout Attack or Septic Arthritis",
+        "warning": "Requires urgent medical evaluation to rule out joint infection (septic joint). (Note: Gout is significantly more common in adult males).",
+        "first_aid_steps": [
+          "Rest and elevate the affected joint above heart level.",
+          "Apply an ice pack wrapped in a cloth to joint for 15-20 minutes.",
+          "Avoid putting weight on the joint.",
+          "Seek prompt medical evaluation."
+        ],
+        "when_to_see_doctor": "Seek urgent medical clinic evaluation within 24 hours."
+      },
+      {
+        "id": "muscle_strain",
+        "label": "Dull Ache in Lower Back or Joint After Heavy Lifting or Activity",
+        "description": "Muscular stiffness or ache following physical strain, exercise, or improper lifting posture.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Muscular Back / Joint Strain",
+        "warning": "Rest the back and avoid re-injury.",
+        "first_aid_steps": [
+          "Rest in a comfortable position (lying on side with a pillow between knees).",
+          "Apply ice pack for first 48 hours, then warm compresses to relax stiff muscles.",
+          "Perform gentle walking as tolerated to prevent stiffness."
+        ],
+        "when_to_see_doctor": "See a doctor if back pain radiates down legs below knees or does not improve after 1 week."
+      }
+    ]
+  },
+  {
+    "id": "hand-pain",
+    "symptom_name": "Hand & Arm Pain",
+    "keywords": [
+      "hand pain",
+      "arm pain",
+      "wrist pain",
+      "finger pain",
+      "hand hurt",
+      "pain in hand",
+      "pain in arm",
+      "wrist hurt",
+      "thumb pain",
+      "knuckle pain",
+      "palm pain",
+      "elbow pain",
+      "hand swelling"
+    ],
+    "initial_question": "What kind of hand or arm pain are you experiencing?",
+    "options": [
+      {
+        "id": "arm_cardiac",
+        "label": "Sudden Arm Pain with Chest Pressure, Shortness of Breath, or Sweating",
+        "description": "Sudden onset of left or right arm pain accompanied by chest heaviness, breathlessness, cold sweat, or nausea.",
+        "severity": "Critical",
+        "is_emergency": true,
+        "subtype_name": "Suspected Cardiac Event (Heart Attack)",
+        "warning": "\ud83d\udea8 CRITICAL EMERGENCY: Arm pain combined with chest pressure or breathlessness is a heart attack warning indicator.",
+        "first_aid_steps": [
+          "Call 112 (or local emergency medical services) immediately.",
+          "Stop all physical activity immediately and sit down in a comfortable position.",
+          "Loosen tight clothing around neck and chest.",
+          "Do NOT attempt to drive yourself to the hospital.",
+          "Monitor breathing and alertness until paramedics arrive."
+        ],
+        "when_to_see_doctor": "Immediate emergency room / 112 dispatch required."
+      },
+      {
+        "id": "hand_fracture",
+        "label": "Sudden Pain After Fall/Impact with Deformed Bone or Inability to Move",
+        "description": "Severe localized pain after trauma, with visible bone deformity, intense swelling, or inability to move wrist/fingers.",
+        "severity": "High",
+        "is_emergency": false,
+        "subtype_name": "Suspected Hand / Wrist Fracture or Dislocation",
+        "warning": "Requires urgent orthopedic X-ray, splinting, and immobilization.",
+        "first_aid_steps": [
+          "Immobilize the hand/arm using a pillow or sling.",
+          "Apply an ice pack wrapped in a cloth to reduce swelling.",
+          "Do NOT try to push protruding bone back in or force hand into position.",
+          "Transport safely to hospital emergency room or urgent care center."
+        ],
+        "when_to_see_doctor": "Urgent hospital emergency evaluation required."
+      },
+      {
+        "id": "carpal_tunnel",
+        "label": "Numbness, Tingling, or Shooting 'Pins & Needles' in Thumb/Fingers",
+        "description": "Nerve discomfort radiating down forearm into thumb, index, or middle finger, often worse at night or after typing.",
+        "severity": "Moderate",
+        "is_emergency": false,
+        "subtype_name": "Carpal Tunnel Syndrome / Nerve Compression",
+        "warning": "Avoid wrist flexing and repetitive hand strain.",
+        "first_aid_steps": [
+          "Rest hand and keep wrist in a straight neutral position.",
+          "Avoid repetitive typing, heavy gripping, or vibrating tools.",
+          "Wear a supportive wrist splint, especially at night.",
+          "Apply cold compress for 15 minutes to reduce wrist joint swelling."
+        ],
+        "when_to_see_doctor": "Schedule physician or neurologist evaluation if hand numbness or weakness persists."
+      },
+      {
+        "id": "tendonitis_strain",
+        "label": "Dull Ache, Stiffness, or Minor Swelling in Wrist/Fingers After Overuse",
+        "description": "Muscular ache or tendon stiffness following sports, computer work, or repetitive lifting.",
+        "severity": "Low",
+        "is_emergency": false,
+        "subtype_name": "Hand / Wrist Strain or Tendonitis",
+        "warning": "Follow R.I.C.E protocol (Rest, Ice, Compression, Elevation).",
+        "first_aid_steps": [
+          "Rest the hand and take regular breaks from repetitive work.",
+          "Apply cold compress for 15-20 minutes 3 times daily.",
+          "Elevate hand on a pillow when resting to decrease fluid buildup.",
+          "Perform gentle finger and wrist range-of-motion stretches."
+        ],
+        "when_to_see_doctor": "Consult doctor if pain persists over 1 week or prevents daily activities."
+      }
+    ]
+  },
+  {
+    "id": "leg-pain",
+    "symptom_name": "Leg & Foot Pain",
+    "keywords": [
+      "leg pain",
+      "foot pain",
+      "knee pain",
+      "calf pain",
+      "ankle sprain",
+      "thigh pain",
+      "leg hurt"
+    ],
+    "initial_question": "What best describes your leg or foot pain?",
+    "options": [
+      {
+        "id": "leg_opt1",
+        "label": "Sudden severe pain after fall/injury",
+        "description": "Possible fracture or ligament rupture",
+        "severity": "EMERGENCY",
+        "is_emergency": true
+      },
+      {
+        "id": "leg_opt2",
+        "label": "Twisted ankle / Sprain with swelling",
+        "description": "Soft tissue or joint strain",
+        "severity": "URGENT",
+        "is_emergency": false
+      },
+      {
+        "id": "leg_opt3",
+        "label": "Muscle cramp or mild ache",
+        "description": "Fatigue, dehydration, or mild strain",
+        "severity": "LOW",
+        "is_emergency": false
+      }
+    ]
+  }
+]
