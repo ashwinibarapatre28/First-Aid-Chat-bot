@@ -1,0 +1,2780 @@
+{
+  "chest_pain": {
+    "topic_id": "chest_pain",
+    "title": "Chest Pain Assessment",
+    "start_node": "q_location",
+    "nodes": {
+      "q_location": {
+        "type": "question",
+        "question": "Where exactly is the pain located?",
+        "options": [
+          {
+            "label": "Left side of chest",
+            "value": "left_side",
+            "next_node": "q_onset"
+          },
+          {
+            "label": "Right side of chest",
+            "value": "right_side",
+            "next_node": "q_onset"
+          },
+          {
+            "label": "Center of chest",
+            "value": "center",
+            "next_node": "q_onset"
+          },
+          {
+            "label": "Upper chest",
+            "value": "upper",
+            "next_node": "q_onset"
+          },
+          {
+            "label": "Lower chest",
+            "value": "lower",
+            "next_node": "q_onset"
+          }
+        ]
+      },
+      "q_onset": {
+        "type": "question",
+        "question": "Did the pain start suddenly or gradually?",
+        "options": [
+          {
+            "label": "Suddenly",
+            "value": "suddenly",
+            "next_node": "q_radiating"
+          },
+          {
+            "label": "Gradually",
+            "value": "gradually",
+            "next_node": "q_radiating"
+          },
+          {
+            "label": "Not sure",
+            "value": "not_sure",
+            "next_node": "q_radiating"
+          }
+        ]
+      },
+      "q_radiating": {
+        "type": "question",
+        "question": "Is the pain spreading to your arm, shoulder, jaw, neck, or back?",
+        "options": [
+          {
+            "label": "Yes",
+            "value": "yes",
+            "next_node": "q_symptoms"
+          },
+          {
+            "label": "No",
+            "value": "no",
+            "next_node": "q_symptoms"
+          },
+          {
+            "label": "Not sure",
+            "value": "not_sure",
+            "next_node": "q_symptoms"
+          }
+        ]
+      },
+      "q_symptoms": {
+        "type": "question",
+        "question": "Are you experiencing any of these symptoms?",
+        "options": [
+          {
+            "label": "Difficulty breathing",
+            "value": "breathing",
+            "next_node": "res_chest_emergency"
+          },
+          {
+            "label": "Sweating",
+            "value": "sweating",
+            "next_node": "res_chest_emergency"
+          },
+          {
+            "label": "Dizziness",
+            "value": "dizziness",
+            "next_node": "res_chest_emergency"
+          },
+          {
+            "label": "Nausea",
+            "value": "nausea",
+            "next_node": "res_chest_emergency"
+          },
+          {
+            "label": "Fainting",
+            "value": "fainting",
+            "next_node": "res_chest_emergency"
+          },
+          {
+            "label": "None of these",
+            "value": "none",
+            "next_node": "eval_chest"
+          }
+        ]
+      },
+      "eval_chest": {
+        "type": "evaluator",
+        "rules": [
+          {
+            "if_answers": {
+              "q_location": "left_side"
+            },
+            "next_node": "res_chest_urgent"
+          },
+          {
+            "if_answers": {
+              "q_radiating": "yes"
+            },
+            "next_node": "res_chest_urgent"
+          }
+        ],
+        "default_node": "res_chest_low"
+      },
+      "res_chest_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 EMERGENCY MEDICAL WARNING",
+        "message": "\u26a0\ufe0f This combination of symptoms can be serious and needs urgent medical evaluation.",
+        "warning": "Chest pain accompanied by radiating pain, breathlessness, sweating, or dizziness may indicate a critical cardiac emergency. Please call emergency services (112) immediately.",
+        "guidance": [
+          "Call emergency services (112) immediately.",
+          "Stop all physical activity immediately.",
+          "Sit or rest in a comfortable position (leaning back with knees slightly bent).",
+          "Loosen any tight clothing around neck and chest.",
+          "Do NOT drive yourself to the hospital.",
+          "Follow instructions from emergency medical professionals."
+        ]
+      },
+      "res_chest_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f URGENT MEDICAL EVALUATION RECOMMENDED",
+        "message": "Chest pain (especially on the left side or radiating) should be evaluated by a healthcare professional.",
+        "warning": "Although immediate red-flag symptoms were not reported, localized or radiating chest pain requires prompt medical evaluation.",
+        "guidance": [
+          "Rest quietly and avoid any strenuous activity.",
+          "Have someone escort you to an urgent care center or hospital emergency room.",
+          "If pain worsens or breathlessness/sweating develops, call 112 immediately."
+        ]
+      },
+      "res_chest_low": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb FIRST-AID & MONITORING GUIDANCE",
+        "message": "Chest discomfort without red-flag symptoms.",
+        "warning": "This pain may be related to muscle strain or mild irritation. Monitor your symptoms closely.",
+        "guidance": [
+          "Rest in a comfortable position.",
+          "Avoid heavy lifting or torso twisting.",
+          "Practice calm, steady breathing.",
+          "If symptoms persist or worsen, consult a doctor."
+        ]
+      }
+    }
+  },
+  "cpr": {
+    "topic_id": "cpr",
+    "title": "CPR & Cardiac Arrest Assessment",
+    "start_node": "q_responsive",
+    "nodes": {
+      "q_responsive": {
+        "type": "question",
+        "question": "Is the person conscious and responsive to firm shoulder tapping and shouting?",
+        "options": [
+          {
+            "label": "Yes - conscious",
+            "value": "yes",
+            "next_node": "q_breathing_conscious"
+          },
+          {
+            "label": "No - unresponsive",
+            "value": "no",
+            "next_node": "q_breathing_unconscious"
+          }
+        ]
+      },
+      "q_breathing_conscious": {
+        "type": "question",
+        "question": "Are they breathing normally or experiencing chest discomfort?",
+        "options": [
+          {
+            "label": "Breathing normally",
+            "value": "normal",
+            "next_node": "res_cpr_monitor"
+          },
+          {
+            "label": "Difficulty breathing / Chest pain",
+            "value": "difficulty",
+            "next_node": "res_cpr_urgent"
+          }
+        ]
+      },
+      "q_breathing_unconscious": {
+        "type": "question",
+        "question": "Check breathing for 10 seconds: Is the person breathing normally?",
+        "options": [
+          {
+            "label": "Yes - breathing normally",
+            "value": "yes",
+            "next_node": "res_cpr_recovery_position"
+          },
+          {
+            "label": "No breathing / Only gasping",
+            "value": "no",
+            "next_node": "res_cpr_emergency"
+          }
+        ]
+      },
+      "res_cpr_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 CRITICAL CARDIAC ARREST EMERGENCY",
+        "message": "\u26a0\ufe0f Person is unresponsive and not breathing normally! Immediate CPR required.",
+        "warning": "This is a life-threatening emergency. Call 112 immediately and begin CPR compressions.",
+        "guidance": [
+          "Call 112 (or local emergency services) immediately and fetch an AED if available.",
+          "Position the person flat on their back on a firm surface.",
+          "Place heel of one hand in center of chest; interlock fingers of other hand.",
+          "Push hard and fast: 100 to 120 compressions per minute (2 inches / 5 cm deep).",
+          "Allow full chest recoil after each push.",
+          "If trained, give 2 rescue breaths after every 30 compressions; otherwise perform continuous hands-only CPR.",
+          "Continue until paramedics arrive or AED is ready."
+        ]
+      },
+      "res_cpr_recovery_position": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f UNCONSCIOUS BUT BREATHING",
+        "message": "Person is unresponsive but breathing normally.",
+        "warning": "Unconsciousness requires medical evaluation. Place in recovery position to protect airway.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Roll the person onto their side into the recovery position.",
+          "Tilt head back gently to keep airway open and clear.",
+          "Monitor breathing continuously until paramedics arrive."
+        ]
+      },
+      "res_cpr_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f URGENT MEDICAL CARE REQUIRED",
+        "message": "Conscious person with severe respiratory or cardiac discomfort.",
+        "warning": "Requires prompt medical evaluation to prevent cardiac deterioration.",
+        "guidance": [
+          "Keep the person seated comfortably and quiet.",
+          "Loosen tight clothing around neck and chest.",
+          "Call 112 if symptoms escalate or consciousness decreases."
+        ]
+      },
+      "res_cpr_monitor": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb STABLE - MONITOR RESPONSIVENESS",
+        "message": "Person is conscious and breathing normally.",
+        "warning": "Monitor for any changes in condition.",
+        "guidance": [
+          "Ensure person remains seated or resting.",
+          "Offer water if alert and oriented.",
+          "Seek medical advice if feeling unwell."
+        ]
+      }
+    }
+  },
+  "choking": {
+    "topic_id": "choking",
+    "title": "Choking Emergency Assessment",
+    "start_node": "q_speak_cough",
+    "nodes": {
+      "q_speak_cough": {
+        "type": "question",
+        "question": "Is the person able to speak or cough?",
+        "options": [
+          {
+            "label": "Yes - can speak or cough",
+            "value": "yes",
+            "next_node": "q_cough_strong"
+          },
+          {
+            "label": "No - cannot speak or cough",
+            "value": "no",
+            "next_node": "q_conscious_choking"
+          }
+        ]
+      },
+      "q_cough_strong": {
+        "type": "question",
+        "question": "Are they coughing strongly?",
+        "options": [
+          {
+            "label": "Yes - coughing strongly",
+            "value": "yes",
+            "next_node": "res_choking_cough_guidance"
+          },
+          {
+            "label": "No - weak or silent cough",
+            "value": "no",
+            "next_node": "q_conscious_choking"
+          }
+        ]
+      },
+      "q_conscious_choking": {
+        "type": "question",
+        "question": "Is the person conscious?",
+        "options": [
+          {
+            "label": "Yes - conscious",
+            "value": "yes",
+            "next_node": "res_choking_conscious_guidance"
+          },
+          {
+            "label": "No - unconscious",
+            "value": "no",
+            "next_node": "res_choking_unconscious_guidance"
+          }
+        ]
+      },
+      "res_choking_cough_guidance": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MILD AIRWAY OBSTRUCTION",
+        "message": "Person is coughing effectively.",
+        "warning": "Do not interfere with natural coughing. Encourage them to keep coughing.",
+        "guidance": [
+          "Encourage the person to keep coughing forcefully.",
+          "Stay with them and monitor closely.",
+          "Do NOT give back blows while they are coughing strongly on their own."
+        ]
+      },
+      "res_choking_conscious_guidance": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 SEVERE CHOKING EMERGENCY",
+        "message": "\u26a0\ufe0f Complete airway blockage! Immediate intervention needed.",
+        "warning": "Person cannot breathe or speak. Act immediately and call emergency services (112).",
+        "guidance": [
+          "Call 112 immediately or ask someone nearby to call.",
+          "Give 5 firm back blows: Lean person forward and strike firmly between shoulder blades with heel of hand.",
+          "If back blows fail, give 5 abdominal thrusts (Heimlich maneuver): Stand behind, wrap arms around waist, make a fist above navel, pull inward and upward sharply.",
+          "Alternate 5 back blows and 5 abdominal thrusts until object is dislodged."
+        ]
+      },
+      "res_choking_unconscious_guidance": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 UNCONSCIOUS CHOKING EMERGENCY",
+        "message": "\u26a0\ufe0f Person has lost consciousness due to airway blockage!",
+        "warning": "Call 112 immediately and begin CPR compressions.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Lower the person carefully onto their back on the floor.",
+          "Begin CPR chest compressions (30 compressions).",
+          "Before rescue breaths, open mouth and remove object ONLY if visibly seen.",
+          "Continue CPR until emergency responders take over."
+        ]
+      }
+    }
+  },
+  "severe_bleeding": {
+    "topic_id": "severe_bleeding",
+    "title": "Bleeding Assessment",
+    "start_node": "q_heavy",
+    "nodes": {
+      "q_heavy": {
+        "type": "question",
+        "question": "Is the bleeding heavy or spurting?",
+        "options": [
+          {
+            "label": "Yes - spurting or heavy",
+            "value": "yes",
+            "next_node": "q_pressure"
+          },
+          {
+            "label": "No - moderate/minor oozing",
+            "value": "no",
+            "next_node": "q_location"
+          },
+          {
+            "label": "Not sure",
+            "value": "not_sure",
+            "next_node": "q_pressure"
+          }
+        ]
+      },
+      "q_pressure": {
+        "type": "question",
+        "question": "Is blood continuing to flow despite firm direct pressure?",
+        "options": [
+          {
+            "label": "Yes",
+            "value": "yes",
+            "next_node": "q_location"
+          },
+          {
+            "label": "No",
+            "value": "no",
+            "next_node": "q_location"
+          }
+        ]
+      },
+      "q_location": {
+        "type": "question",
+        "question": "Where is the injury located?",
+        "options": [
+          {
+            "label": "Arm",
+            "value": "arm",
+            "next_node": "eval_bleeding"
+          },
+          {
+            "label": "Leg",
+            "value": "leg",
+            "next_node": "eval_bleeding"
+          },
+          {
+            "label": "Head",
+            "value": "head",
+            "next_node": "eval_bleeding"
+          },
+          {
+            "label": "Chest",
+            "value": "chest",
+            "next_node": "eval_bleeding"
+          },
+          {
+            "label": "Abdomen",
+            "value": "abdomen",
+            "next_node": "eval_bleeding"
+          },
+          {
+            "label": "Other",
+            "value": "other",
+            "next_node": "eval_bleeding"
+          }
+        ]
+      },
+      "eval_bleeding": {
+        "type": "evaluator",
+        "rules": [
+          {
+            "if_answers": {
+              "q_heavy": "yes"
+            },
+            "next_node": "res_bleeding_emergency"
+          },
+          {
+            "if_answers": {
+              "q_pressure": "yes"
+            },
+            "next_node": "res_bleeding_emergency"
+          }
+        ],
+        "default_node": "res_bleeding_moderate"
+      },
+      "res_bleeding_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 SEVERE HEMORRHAGE EMERGENCY",
+        "message": "\u26a0\ufe0f Severe bleeding can lead to life-threatening shock within minutes.",
+        "warning": "Uncontrolled bleeding requires urgent emergency dispatch and hard direct pressure. Call 112 immediately.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Apply firm, continuous direct pressure on the wound using a clean cloth, sterile dressing, or gloved hand.",
+          "Do NOT release pressure to check the wound.",
+          "If blood soaks through, add more cloths on top and compress harder.",
+          "If severe limb bleeding persists, apply a tourniquet 2-3 inches above the wound if trained.",
+          "Keep the person lying down and warm to prevent shock."
+        ]
+      },
+      "res_bleeding_moderate": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f MODERATE BLEEDING CONTROL",
+        "message": "Bleeding is controlled or moderate.",
+        "warning": "Ensure clean pressure dressing and check if stitches are required.",
+        "guidance": [
+          "Maintain steady direct pressure for 10 minutes.",
+          "Clean around the wound gently once bleeding slows.",
+          "Apply a sterile bandage or dressing.",
+          "Seek medical evaluation if wound is deep or edges gap open."
+        ]
+      }
+    }
+  },
+  "burns": {
+    "topic_id": "burns",
+    "title": "Burn Injury Assessment",
+    "start_node": "q_cause",
+    "nodes": {
+      "q_cause": {
+        "type": "question",
+        "question": "What caused the burn?",
+        "options": [
+          {
+            "label": "Hot liquid / Steam",
+            "value": "hot_liquid",
+            "next_node": "q_body_part"
+          },
+          {
+            "label": "Fire / Flame",
+            "value": "fire",
+            "next_node": "q_body_part"
+          },
+          {
+            "label": "Hot object",
+            "value": "hot_object",
+            "next_node": "q_body_part"
+          },
+          {
+            "label": "Chemical",
+            "value": "chemical",
+            "next_node": "res_burn_chemical_emergency"
+          },
+          {
+            "label": "Electricity",
+            "value": "electricity",
+            "next_node": "res_burn_electrical_emergency"
+          },
+          {
+            "label": "Unknown",
+            "value": "unknown",
+            "next_node": "q_body_part"
+          }
+        ]
+      },
+      "q_body_part": {
+        "type": "question",
+        "question": "Which part of the body is affected?",
+        "options": [
+          {
+            "label": "Face / Neck / Airway",
+            "value": "face",
+            "next_node": "res_burn_facial_emergency"
+          },
+          {
+            "label": "Hand / Foot",
+            "value": "hand_foot",
+            "next_node": "q_blisters"
+          },
+          {
+            "label": "Arm",
+            "value": "arm",
+            "next_node": "q_blisters"
+          },
+          {
+            "label": "Leg",
+            "value": "leg",
+            "next_node": "q_blisters"
+          },
+          {
+            "label": "Chest / Abdomen",
+            "value": "chest",
+            "next_node": "q_blisters"
+          },
+          {
+            "label": "Other",
+            "value": "other",
+            "next_node": "q_blisters"
+          }
+        ]
+      },
+      "q_blisters": {
+        "type": "question",
+        "question": "Does the burn have blisters, charred skin, or cover a large area?",
+        "options": [
+          {
+            "label": "Yes - blisters / charred skin",
+            "value": "yes",
+            "next_node": "res_burn_severe"
+          },
+          {
+            "label": "No - just red skin",
+            "value": "no",
+            "next_node": "res_burn_minor"
+          },
+          {
+            "label": "Not sure",
+            "value": "not_sure",
+            "next_node": "res_burn_severe"
+          }
+        ]
+      },
+      "res_burn_chemical_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 CHEMICAL BURN EMERGENCY",
+        "message": "\u26a0\ufe0f Chemical burns can continue damaging skin until thoroughly flushed.",
+        "warning": "Flush with clean water immediately and call 112.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Flush the affected area continuously with cool tap water for at least 20 minutes.",
+          "Remove contaminated clothing while flushing.",
+          "Do NOT apply ice, butter, or ointments."
+        ]
+      },
+      "res_burn_electrical_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 ELECTRICAL BURN EMERGENCY",
+        "message": "\u26a0\ufe0f Electrical burns can cause internal tissue damage.",
+        "warning": "Seek immediate emergency hospital evaluation.",
+        "guidance": [
+          "Ensure power source is disconnected safely.",
+          "Call 112 immediately.",
+          "Check breathing and pulse.",
+          "Cover burn entry/exit wounds loosely with sterile dry dressings."
+        ]
+      },
+      "res_burn_facial_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 FACIAL / AIRWAY BURN EMERGENCY",
+        "message": "\u26a0\ufe0f Burns to face or neck can cause rapid airway swelling.",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Keep person sitting upright to assist breathing.",
+          "Apply cool wet compresses gently without blocking airway."
+        ]
+      },
+      "res_burn_severe": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f SEVERE / BLISTERED BURN CARE",
+        "message": "Second or third-degree burn requiring medical treatment.",
+        "warning": "Seek professional medical attention promptly.",
+        "guidance": [
+          "Cool burn under running tap water for 10-20 minutes.",
+          "Cover loosely with sterile non-stick bandage or plastic wrap.",
+          "Do NOT pop blisters or peel burned skin.",
+          "Seek medical care at urgent care or emergency room."
+        ]
+      },
+      "res_burn_minor": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb FIRST-DEGREE MINOR BURN CARE",
+        "message": "Superficial minor heat burn.",
+        "warning": "Cool the burn and soothe the skin.",
+        "guidance": [
+          "Cool burn under cool running tap water for 10 minutes.",
+          "Apply aloe vera gel or soothing lotion once cooled.",
+          "Protect skin from further friction or heat."
+        ]
+      }
+    }
+  },
+  "fractures": {
+    "topic_id": "fractures",
+    "title": "Fracture & Bone Injury Assessment",
+    "start_node": "q_body_part",
+    "nodes": {
+      "q_body_part": {
+        "type": "question",
+        "question": "Which body part may be injured?",
+        "options": [
+          {
+            "label": "Head / Neck / Spine",
+            "value": "spine",
+            "next_node": "res_fracture_spine_emergency"
+          },
+          {
+            "label": "Arm / Wrist",
+            "value": "arm",
+            "next_node": "q_movement"
+          },
+          {
+            "label": "Leg / Ankle",
+            "value": "leg",
+            "next_node": "q_movement"
+          },
+          {
+            "label": "Collarbone / Rib",
+            "value": "torso",
+            "next_node": "q_movement"
+          },
+          {
+            "label": "Other",
+            "value": "other",
+            "next_node": "q_movement"
+          }
+        ]
+      },
+      "q_movement": {
+        "type": "question",
+        "question": "Can the person move the injured area or bear weight?",
+        "options": [
+          {
+            "label": "Yes - can move with mild pain",
+            "value": "yes",
+            "next_node": "q_deformity"
+          },
+          {
+            "label": "No - completely unable to move",
+            "value": "no",
+            "next_node": "q_deformity"
+          },
+          {
+            "label": "Severe pain when trying to move",
+            "value": "severe_pain",
+            "next_node": "q_deformity"
+          }
+        ]
+      },
+      "q_deformity": {
+        "type": "question",
+        "question": "Is there severe swelling, visible deformity, or bone piercing the skin?",
+        "options": [
+          {
+            "label": "Bone piercing skin (Open fracture)",
+            "value": "open",
+            "next_node": "res_fracture_open_emergency"
+          },
+          {
+            "label": "Visible deformity / Crooked bone",
+            "value": "deformed",
+            "next_node": "res_fracture_deformed_emergency"
+          },
+          {
+            "label": "Severe swelling / Severe pain",
+            "value": "swelling",
+            "next_node": "q_cause"
+          },
+          {
+            "label": "None of these",
+            "value": "none",
+            "next_node": "q_cause"
+          }
+        ]
+      },
+      "q_cause": {
+        "type": "question",
+        "question": "Was the injury caused by a serious accident or fall from height?",
+        "options": [
+          {
+            "label": "Yes - high impact / fall",
+            "value": "yes",
+            "next_node": "res_fracture_urgent"
+          },
+          {
+            "label": "No - minor trip or bump",
+            "value": "no",
+            "next_node": "res_fracture_low"
+          }
+        ]
+      },
+      "res_fracture_spine_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 SUSPECTED SPINAL / HEAD TRAUMA EMERGENCY",
+        "message": "\u26a0\ufe0f Do NOT move the person! Risk of permanent spinal cord injury.",
+        "warning": "Call 112 immediately and keep the person completely still.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Do NOT move the person unless there is immediate physical danger (fire/explosion).",
+          "Hold head and neck in alignment manually to prevent any movement.",
+          "Keep person calm and warm until paramedics arrive."
+        ]
+      },
+      "res_fracture_open_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 OPEN FRACTURE EMERGENCY",
+        "message": "\u26a0\ufe0f Bone protruding through skin!",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Control bleeding by applying pressure AROUND the bone, not directly on it.",
+          "Do NOT try to push the bone back in.",
+          "Cover wound loosely with sterile dressing.",
+          "Immobilize the limb in position found."
+        ]
+      },
+      "res_fracture_deformed_emergency": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f SUSPECTED CLOSED FRACTURE / DEFORMITY",
+        "message": "Deformed or immovably fractured bone.",
+        "warning": "Requires urgent hospital X-ray and splinting.",
+        "guidance": [
+          "Immobilize injured limb using splint or padding.",
+          "Apply ice pack wrapped in cloth to reduce swelling.",
+          "Transport safely to hospital emergency room or call 112."
+        ]
+      },
+      "res_fracture_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f HIGH-IMPACT INJURY EVALUATION",
+        "message": "High-impact injury with suspected fracture or sprain.",
+        "warning": "Seek prompt orthopedic evaluation.",
+        "guidance": [
+          "Rest the limb completely.",
+          "Apply ice pack for 15-20 minutes.",
+          "Visit emergency room or urgent care clinic for X-ray."
+        ]
+      },
+      "res_fracture_low": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MINOR BONE / JOINT DISCOMFORT",
+        "message": "Minor trauma without obvious fracture signs.",
+        "warning": "Monitor for swelling or increasing pain.",
+        "guidance": [
+          "Rest and elevate injured area.",
+          "Apply cold compress.",
+          "Seek medical advice if unable to use limb."
+        ]
+      }
+    }
+  },
+  "fainting": {
+    "topic_id": "fainting",
+    "title": "Fainting (Syncope) Assessment",
+    "start_node": "q_conscious",
+    "nodes": {
+      "q_conscious": {
+        "type": "question",
+        "question": "Is the person conscious now?",
+        "options": [
+          {
+            "label": "Yes - conscious",
+            "value": "yes",
+            "next_node": "q_breathing"
+          },
+          {
+            "label": "No - still unconscious",
+            "value": "no",
+            "next_node": "res_fainting_unconscious_emergency"
+          }
+        ]
+      },
+      "q_breathing": {
+        "type": "question",
+        "question": "Are they breathing normally?",
+        "options": [
+          {
+            "label": "Yes - breathing normally",
+            "value": "yes",
+            "next_node": "q_fainted_recently"
+          },
+          {
+            "label": "No - abnormal breathing / gasping",
+            "value": "no",
+            "next_node": "res_fainting_breathing_emergency"
+          }
+        ]
+      },
+      "q_fainted_recently": {
+        "type": "question",
+        "question": "How long did the fainting episode last?",
+        "options": [
+          {
+            "label": "Less than 1 minute",
+            "value": "brief",
+            "next_node": "q_symptoms"
+          },
+          {
+            "label": "More than 1 minute",
+            "value": "prolonged",
+            "next_node": "res_fainting_prolonged_emergency"
+          },
+          {
+            "label": "Not sure",
+            "value": "not_sure",
+            "next_node": "q_symptoms"
+          }
+        ]
+      },
+      "q_symptoms": {
+        "type": "question",
+        "question": "Did they faint with chest pain, numbness, or hit their head during the fall?",
+        "options": [
+          {
+            "label": "Yes - chest pain / head hit / numbness",
+            "value": "yes",
+            "next_node": "res_fainting_symptom_emergency"
+          },
+          {
+            "label": "No - none of these",
+            "value": "no",
+            "next_node": "res_fainting_recovery_guidance"
+          }
+        ]
+      },
+      "res_fainting_unconscious_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 PROLONGED UNCONSCIOUSNESS EMERGENCY",
+        "message": "\u26a0\ufe0f Person remains unconscious!",
+        "warning": "Call 112 immediately.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Check airway and breathing.",
+          "If breathing normally, place in recovery position on side.",
+          "If not breathing normally, begin CPR compressions immediately."
+        ]
+      },
+      "res_fainting_breathing_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 RESPIRATORY DISTRESS FAINTING EMERGENCY",
+        "message": "\u26a0\ufe0f Fainting accompanied by breathing difficulty!",
+        "warning": "Call 112 immediately.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Keep airway open and monitor breathing closely."
+        ]
+      },
+      "res_fainting_prolonged_emergency": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f PROLONGED FAINTING EVALUATION",
+        "message": "Loss of consciousness lasted over 1 minute.",
+        "warning": "Requires urgent medical investigation.",
+        "guidance": [
+          "Keep person lying flat with legs elevated 12 inches.",
+          "Do NOT stand up quickly.",
+          "Seek medical evaluation at hospital or urgent care."
+        ]
+      },
+      "res_fainting_symptom_emergency": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f FAINTING WITH ASSOCIATED SYMPTOMS",
+        "message": "Fainting combined with head impact or cardiac symptoms.",
+        "warning": "Prompt medical evaluation required.",
+        "guidance": [
+          "Keep person resting comfortably.",
+          "Check for head injuries or contusions.",
+          "Seek emergency medical evaluation."
+        ]
+      },
+      "res_fainting_recovery_guidance": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb SIMPLE FAINTING RECOVERY CARE",
+        "message": "Brief fainting episode with full recovery.",
+        "warning": "Help person recover gradually.",
+        "guidance": [
+          "Keep lying flat on back with legs elevated for 10 minutes.",
+          "Loosen tight clothing around neck.",
+          "Offer sips of cool water once fully alert.",
+          "Stand up slowly in stages."
+        ]
+      }
+    }
+  },
+  "seizures": {
+    "topic_id": "seizures",
+    "title": "Seizure & Convulsion Assessment",
+    "start_node": "q_active",
+    "nodes": {
+      "q_active": {
+        "type": "question",
+        "question": "Is the person currently having an active seizure / shaking?",
+        "options": [
+          {
+            "label": "Yes - currently seizing",
+            "value": "yes",
+            "next_node": "q_duration"
+          },
+          {
+            "label": "No - seizure just finished",
+            "value": "no",
+            "next_node": "q_duration"
+          }
+        ]
+      },
+      "q_duration": {
+        "type": "question",
+        "question": "How long has the seizure lasted?",
+        "options": [
+          {
+            "label": "Less than 5 minutes",
+            "value": "brief",
+            "next_node": "q_repeat_pregnant"
+          },
+          {
+            "label": "More than 5 minutes",
+            "value": "prolonged",
+            "next_node": "res_seizure_prolonged_emergency"
+          },
+          {
+            "label": "Not sure",
+            "value": "not_sure",
+            "next_node": "q_repeat_pregnant"
+          }
+        ]
+      },
+      "q_repeat_pregnant": {
+        "type": "question",
+        "question": "Is this a second seizure, or is the person pregnant, diabetic, or injured during a fall?",
+        "options": [
+          {
+            "label": "Yes - high risk factor present",
+            "value": "yes",
+            "next_node": "res_seizure_high_risk_emergency"
+          },
+          {
+            "label": "No - first single seizure / no injury",
+            "value": "no",
+            "next_node": "res_seizure_post_care_guidance"
+          }
+        ]
+      },
+      "res_seizure_prolonged_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 STATUS EPILEPTICUS / PROLONGED SEIZURE EMERGENCY",
+        "message": "\u26a0\ufe0f Seizure lasting over 5 minutes is a critical emergency!",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Protect head with folded jacket or soft cushion.",
+          "Clear surrounding area of hard/sharp objects.",
+          "Do NOT restrain movements or put anything in their mouth."
+        ]
+      },
+      "res_seizure_high_risk_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 HIGH-RISK SEIZURE EMERGENCY",
+        "message": "\u26a0\ufe0f Repeated seizure or high-risk medical condition.",
+        "warning": "Call 112 immediately.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Roll onto side (recovery position) once shaking stops to keep airway clear.",
+          "Reassure person as they wake up."
+        ]
+      },
+      "res_seizure_post_care_guidance": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f SEIZURE POST-CARE GUIDANCE",
+        "message": "Brief single seizure has stopped.",
+        "warning": "Ensure safe recovery and medical checkup.",
+        "guidance": [
+          "Turn person onto their side into recovery position.",
+          "Do NOT put anything in their mouth.",
+          "Stay until fully conscious and alert.",
+          "Consult a physician or neurologist."
+        ]
+      }
+    }
+  },
+  "electric_shock": {
+    "topic_id": "electric_shock",
+    "title": "Electric Shock Assessment",
+    "start_node": "q_contact",
+    "nodes": {
+      "q_contact": {
+        "type": "question",
+        "question": "Is the person still in contact with the live electrical source?",
+        "options": [
+          {
+            "label": "Yes - still touching electrical source",
+            "value": "yes",
+            "next_node": "res_electric_touch_warning"
+          },
+          {
+            "label": "No - disconnected safely",
+            "value": "no",
+            "next_node": "q_conscious"
+          }
+        ]
+      },
+      "q_conscious": {
+        "type": "question",
+        "question": "Is the person conscious?",
+        "options": [
+          {
+            "label": "Yes - conscious",
+            "value": "yes",
+            "next_node": "q_breathing"
+          },
+          {
+            "label": "No - unconscious",
+            "value": "no",
+            "next_node": "q_breathing"
+          }
+        ]
+      },
+      "q_breathing": {
+        "type": "question",
+        "question": "Are they breathing normally?",
+        "options": [
+          {
+            "label": "Yes - breathing normally",
+            "value": "yes",
+            "next_node": "res_electric_urgent_eval"
+          },
+          {
+            "label": "No - not breathing / gasping",
+            "value": "no",
+            "next_node": "res_electric_cpr_emergency"
+          }
+        ]
+      },
+      "res_electric_touch_warning": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 CRITICAL HAZARD: DO NOT TOUCH VICTIM",
+        "message": "\u26a0\ufe0f Do NOT touch the person until power is safely shut off!",
+        "warning": "Touching a victim in active contact with electricity can electrocute you too.",
+        "guidance": [
+          "Do NOT touch the victim directly.",
+          "Turn off main circuit breaker or unplug appliance safely.",
+          "If power cannot be cut, use a dry wooden broom handle or rubber object to push wire away.",
+          "Call 112 immediately."
+        ]
+      },
+      "res_electric_cpr_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 ELECTRIC SHOCK CARDIAC ARREST EMERGENCY",
+        "message": "\u26a0\ufe0f Person is unresponsive and not breathing normally!",
+        "warning": "Call 112 immediately and start CPR.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Begin CPR compressions hard and fast in center of chest.",
+          "Continue until emergency medical services arrive."
+        ]
+      },
+      "res_electric_urgent_eval": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f ELECTRIC SHOCK MEDICAL EVALUATION",
+        "message": "Electric shock recipient requires medical checkup.",
+        "warning": "All electrical shocks require medical examination for internal cardiac or muscular damage.",
+        "guidance": [
+          "Cool any visible entry/exit burn wounds with cool water.",
+          "Cover wounds loosely with sterile dry dressings.",
+          "Go to emergency room for ECG and monitoring."
+        ]
+      }
+    }
+  },
+  "poisoning": {
+    "topic_id": "poisoning",
+    "title": "Poisoning & Ingestion Assessment",
+    "start_node": "q_substance",
+    "nodes": {
+      "q_substance": {
+        "type": "question",
+        "question": "What substance was involved?",
+        "options": [
+          {
+            "label": "Medicine / Prescription drugs",
+            "value": "medicine",
+            "next_node": "q_conscious"
+          },
+          {
+            "label": "Household Chemical / Acid / Detergent",
+            "value": "chemical",
+            "next_node": "q_conscious"
+          },
+          {
+            "label": "Food / Contaminated item",
+            "value": "food",
+            "next_node": "q_conscious"
+          },
+          {
+            "label": "Unknown substance",
+            "value": "unknown",
+            "next_node": "q_conscious"
+          }
+        ]
+      },
+      "q_conscious": {
+        "type": "question",
+        "question": "Is the person conscious?",
+        "options": [
+          {
+            "label": "Yes - conscious",
+            "value": "yes",
+            "next_node": "q_symptoms"
+          },
+          {
+            "label": "No - unconscious",
+            "value": "no",
+            "next_node": "res_poison_unconscious_emergency"
+          }
+        ]
+      },
+      "q_symptoms": {
+        "type": "question",
+        "question": "Are they experiencing difficulty breathing, extreme drowsiness, or severe vomiting?",
+        "options": [
+          {
+            "label": "Yes - severe symptoms present",
+            "value": "yes",
+            "next_node": "res_poison_severe_emergency"
+          },
+          {
+            "label": "No - alert and breathing normally",
+            "value": "no",
+            "next_node": "res_poison_guidance"
+          }
+        ]
+      },
+      "res_poison_unconscious_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 UNCONSCIOUS POISONING EMERGENCY",
+        "message": "\u26a0\ufe0f Person is unresponsive after toxic substance contact!",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Place in recovery position on side to prevent choking if vomiting occurs.",
+          "Do NOT induce vomiting.",
+          "Save chemical container or medicine bottle for paramedics."
+        ]
+      },
+      "res_poison_severe_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 SEVERE POISONING EMERGENCY",
+        "message": "\u26a0\ufe0f Toxic ingestion with severe symptoms!",
+        "warning": "Call emergency services (112) or Poison Control immediately.",
+        "guidance": [
+          "Call 112 or local Poison Control immediately.",
+          "Do NOT induce vomiting unless specifically instructed by experts.",
+          "If chemical on skin/eyes, flush with water for 15-20 minutes.",
+          "Keep substance container ready for medical team."
+        ]
+      },
+      "res_poison_guidance": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f POISON CONTROL ADVICE REQUIRED",
+        "message": "Ingestion of potential toxin.",
+        "warning": "Contact Poison Control center or emergency services promptly.",
+        "guidance": [
+          "Contact Poison Control center or emergency line immediately.",
+          "Do NOT give raw egg, salt water, or induce vomiting.",
+          "Rinse mouth with clear water if corrosive chemical ingested."
+        ]
+      }
+    }
+  },
+  "heat_stroke": {
+    "topic_id": "heat_stroke",
+    "title": "Heat Stroke & Hyperthermia Assessment",
+    "start_node": "q_symptoms",
+    "nodes": {
+      "q_symptoms": {
+        "type": "question",
+        "question": "What symptoms are present?",
+        "options": [
+          {
+            "label": "High temperature & confusion / slurred speech",
+            "value": "confusion",
+            "next_node": "res_heatstroke_emergency"
+          },
+          {
+            "label": "Hot dry/damp skin with fainting",
+            "value": "hot_skin",
+            "next_node": "res_heatstroke_emergency"
+          },
+          {
+            "label": "Heavy sweating, dizziness, nausea",
+            "value": "sweating",
+            "next_node": "q_duration"
+          },
+          {
+            "label": "Mild fatigue & thirst",
+            "value": "mild",
+            "next_node": "res_heat_exhaustion_low"
+          }
+        ]
+      },
+      "q_duration": {
+        "type": "question",
+        "question": "Has the person been in extreme heat for a prolonged period without fluids?",
+        "options": [
+          {
+            "label": "Yes",
+            "value": "yes",
+            "next_node": "res_heat_exhaustion_urgent"
+          },
+          {
+            "label": "No",
+            "value": "no",
+            "next_node": "res_heat_exhaustion_low"
+          }
+        ]
+      },
+      "res_heatstroke_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 CRITICAL HEAT STROKE EMERGENCY",
+        "message": "\u26a0\ufe0f High body temperature with altered mental state is life-threatening!",
+        "warning": "Heat stroke can damage brain and organs. Rapid cooling is mandatory. Call 112.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Move person to cool, shaded or air-conditioned space.",
+          "Rapidly cool: Sponge skin with cool water, apply ice packs to armpits, neck, and groin.",
+          "Fan continuously while keeping skin wet.",
+          "Do NOT give ice-cold drinks rapidly."
+        ]
+      },
+      "res_heat_exhaustion_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f HEAT EXHAUSTION CARE",
+        "message": "Moderate heat exhaustion symptoms.",
+        "warning": "Cool body and hydrate to prevent progression to heat stroke.",
+        "guidance": [
+          "Rest in cool shade.",
+          "Sip cool electrolyte drink or water.",
+          "Loosen tight clothing.",
+          "Seek medical care if no improvement after 30 minutes."
+        ]
+      },
+      "res_heat_exhaustion_low": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MILD HEAT DISCOMFORT",
+        "message": "Mild heat fatigue.",
+        "warning": "Rest and replenish fluids.",
+        "guidance": [
+          "Drink fresh cool water.",
+          "Rest in air-conditioned room.",
+          "Avoid outdoor sunlight until recovered."
+        ]
+      }
+    }
+  },
+  "nosebleed": {
+    "topic_id": "nosebleed",
+    "title": "Nosebleed (Epistaxis) Assessment",
+    "start_node": "q_duration",
+    "nodes": {
+      "q_duration": {
+        "type": "question",
+        "question": "Has the bleeding continued for more than 20 minutes?",
+        "options": [
+          {
+            "label": "Yes - over 20 minutes",
+            "value": "yes",
+            "next_node": "res_nosebleed_prolonged_urgent"
+          },
+          {
+            "label": "No - under 20 minutes",
+            "value": "no",
+            "next_node": "q_injured"
+          }
+        ]
+      },
+      "q_injured": {
+        "type": "question",
+        "question": "Was the nose injured in a head trauma or violent impact?",
+        "options": [
+          {
+            "label": "Yes - severe head/facial trauma",
+            "value": "yes",
+            "next_node": "res_nosebleed_trauma_urgent"
+          },
+          {
+            "label": "No - spontaneous / minor bump",
+            "value": "no",
+            "next_node": "q_heavy"
+          }
+        ]
+      },
+      "q_heavy": {
+        "type": "question",
+        "question": "Is the bleeding very heavy or causing lightheadedness?",
+        "options": [
+          {
+            "label": "Yes - very heavy / dizzy",
+            "value": "yes",
+            "next_node": "res_nosebleed_heavy_urgent"
+          },
+          {
+            "label": "No - manageable bleeding",
+            "value": "no",
+            "next_node": "res_nosebleed_standard_guidance"
+          }
+        ]
+      },
+      "res_nosebleed_prolonged_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f PROLONGED NOSEBLEED EVALUATION",
+        "message": "Nosebleed persisting past 20 minutes.",
+        "warning": "Requires medical cautery or packing at urgent care.",
+        "guidance": [
+          "Maintain continuous pinch pressure for another 10 minutes while traveling to medical care.",
+          "Sit upright leaning slightly forward.",
+          "Visit emergency room or ENT clinic."
+        ]
+      },
+      "res_nosebleed_trauma_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f TRAUMATIC NOSEBLEED EVALUATION",
+        "message": "Nosebleed secondary to head impact.",
+        "warning": "Evaluate for nasal fracture or head trauma.",
+        "guidance": [
+          "Lean forward and pinch soft part of nose.",
+          "Apply ice pack over bridge of nose.",
+          "Seek hospital medical evaluation."
+        ]
+      },
+      "res_nosebleed_heavy_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f HEAVY NOSEBLEED CARE",
+        "message": "Heavy nasal hemorrhage.",
+        "warning": "Monitor for dizziness and seek medical aid if persistent.",
+        "guidance": [
+          "Pinch soft lower part of nose firmly for 15 minutes without releasing.",
+          "Lean forward, do NOT tilt head back.",
+          "Spit out blood instead of swallowing."
+        ]
+      },
+      "res_nosebleed_standard_guidance": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb STANDARD NOSEBLEED FIRST-AID",
+        "message": "Standard minor nosebleed.",
+        "warning": "Follow correct lean-forward technique.",
+        "guidance": [
+          "Sit upright and lean forward slightly.",
+          "Pinch soft nostrils firmly for 10-15 minutes continuously.",
+          "Breathe through mouth.",
+          "Avoid blowing nose for several hours after bleeding stops."
+        ]
+      }
+    }
+  },
+  "allergic_reaction": {
+    "topic_id": "allergic_reaction",
+    "title": "Allergic Reaction & Anaphylaxis Assessment",
+    "start_node": "q_symptoms",
+    "nodes": {
+      "q_symptoms": {
+        "type": "question",
+        "question": "What symptoms are present?",
+        "options": [
+          {
+            "label": "Difficulty breathing or throat tightness",
+            "value": "breathing",
+            "next_node": "res_allergy_anaphylaxis_emergency"
+          },
+          {
+            "label": "Swelling of face, lips, or tongue",
+            "value": "swelling",
+            "next_node": "res_allergy_anaphylaxis_emergency"
+          },
+          {
+            "label": "Skin rash / hives across body",
+            "value": "hives",
+            "next_node": "q_hives_extent"
+          },
+          {
+            "label": "Dizziness or fainting",
+            "value": "dizziness",
+            "next_node": "res_allergy_anaphylaxis_emergency"
+          },
+          {
+            "label": "Mild itching / nasal congestion",
+            "value": "mild",
+            "next_node": "res_allergy_mild"
+          }
+        ]
+      },
+      "q_hives_extent": {
+        "type": "question",
+        "question": "Are the hives spreading rapidly with any feeling of dizziness or stomach cramps?",
+        "options": [
+          {
+            "label": "Yes - spreading rapidly",
+            "value": "yes",
+            "next_node": "res_allergy_anaphylaxis_emergency"
+          },
+          {
+            "label": "No - localized itchy welts",
+            "value": "no",
+            "next_node": "res_allergy_moderate"
+          }
+        ]
+      },
+      "res_allergy_anaphylaxis_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 ANAPHYLACTIC SHOCK EMERGENCY",
+        "message": "\u26a0\ufe0f Severe allergic reaction is life-threatening!",
+        "warning": "Anaphylaxis requires immediate epinephrine injection and 112 emergency call.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Administer Epinephrine Auto-Injector (EpiPen) into outer thigh if available.",
+          "Lay person flat on back (or sit up if breathing is difficult).",
+          "Do NOT give oral pills if person has trouble swallowing.",
+          "Stay with person until paramedics arrive."
+        ]
+      },
+      "res_allergy_moderate": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f MODERATE ALLERGIC HIVES",
+        "message": "Widespread allergic skin reaction.",
+        "warning": "Monitor closely for airway involvement.",
+        "guidance": [
+          "Take over-the-counter antihistamine (cetirizine / diphenhydramine).",
+          "Apply cool wet compresses to itchy skin.",
+          "Call 112 immediately if throat tightness or lip swelling develops."
+        ]
+      },
+      "res_allergy_mild": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MILD ALLERGY CARE",
+        "message": "Minor localized allergic irritation.",
+        "warning": "Avoid allergen and soothe skin.",
+        "guidance": [
+          "Wash skin area with mild soap and water.",
+          "Take antihistamine if needed.",
+          "Rest comfortably."
+        ]
+      }
+    }
+  },
+  "sprains": {
+    "topic_id": "sprains",
+    "title": "Sprain & Strain Assessment",
+    "start_node": "q_body_part",
+    "nodes": {
+      "q_body_part": {
+        "type": "question",
+        "question": "Which body part is injured?",
+        "options": [
+          {
+            "label": "Ankle",
+            "value": "ankle",
+            "next_node": "q_weight"
+          },
+          {
+            "label": "Wrist",
+            "value": "wrist",
+            "next_node": "q_weight"
+          },
+          {
+            "label": "Knee",
+            "value": "knee",
+            "next_node": "q_weight"
+          },
+          {
+            "label": "Other joint",
+            "value": "other",
+            "next_node": "q_weight"
+          }
+        ]
+      },
+      "q_weight": {
+        "type": "question",
+        "question": "Can the person put weight on or move the joint?",
+        "options": [
+          {
+            "label": "Yes - can move / walk",
+            "value": "yes",
+            "next_node": "q_deformity"
+          },
+          {
+            "label": "No - unable to bear weight",
+            "value": "no",
+            "next_node": "res_sprain_severe_urgent"
+          },
+          {
+            "label": "Severe pain when moving",
+            "value": "severe_pain",
+            "next_node": "q_deformity"
+          }
+        ]
+      },
+      "q_deformity": {
+        "type": "question",
+        "question": "Is there severe swelling, bruising, or visible joint deformity?",
+        "options": [
+          {
+            "label": "Yes - severe swelling / deformity",
+            "value": "yes",
+            "next_node": "res_sprain_severe_urgent"
+          },
+          {
+            "label": "No - mild swelling",
+            "value": "no",
+            "next_node": "res_sprain_rice_guidance"
+          }
+        ]
+      },
+      "res_sprain_severe_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f SEVERE SPRAIN / POSSIBLE FRACTURE",
+        "message": "Inability to bear weight or severe joint deformation.",
+        "warning": "Requires clinical examination and X-ray.",
+        "guidance": [
+          "Do NOT force weight bearing on injured joint.",
+          "Apply R.I.C.E protocol (Rest, Ice, Compression, Elevation).",
+          "Visit urgent care for medical evaluation."
+        ]
+      },
+      "res_sprain_rice_guidance": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MILD SPRAIN R.I.C.E. CARE",
+        "message": "Ligament sprain or muscle strain.",
+        "warning": "Follow the R.I.C.E protocol for 48 hours.",
+        "guidance": [
+          "Rest: Avoid putting weight on joint.",
+          "Ice: Apply ice pack wrapped in cloth for 15-20 minutes every 2 hours.",
+          "Compression: Wrap elastic crepe bandage gently.",
+          "Elevation: Prop joint above heart level."
+        ]
+      }
+    }
+  },
+  "cuts_and_wounds": {
+    "topic_id": "cuts_and_wounds",
+    "title": "Cuts & Wounds Assessment",
+    "start_node": "q_bleeding",
+    "nodes": {
+      "q_bleeding": {
+        "type": "question",
+        "question": "Is the wound bleeding heavily?",
+        "options": [
+          {
+            "label": "Yes - heavy bleeding",
+            "value": "yes",
+            "next_node": "res_cut_heavy_emergency"
+          },
+          {
+            "label": "No - minor oozing or stopped",
+            "value": "no",
+            "next_node": "q_deep"
+          }
+        ]
+      },
+      "q_deep": {
+        "type": "question",
+        "question": "Is the wound deep or gaping open?",
+        "options": [
+          {
+            "label": "Yes - deep / gaping open",
+            "value": "yes",
+            "next_node": "res_cut_gaping_urgent"
+          },
+          {
+            "label": "No - superficial cut / scrape",
+            "value": "no",
+            "next_node": "q_dirty"
+          }
+        ]
+      },
+      "q_dirty": {
+        "type": "question",
+        "question": "Was the wound caused by a dirty/rusty object, animal bite, or is an object stuck in it?",
+        "options": [
+          {
+            "label": "Yes - dirty / embedded object / bite",
+            "value": "yes",
+            "next_node": "res_cut_dirty_urgent"
+          },
+          {
+            "label": "No - clean glass / paper cut / clean knife",
+            "value": "no",
+            "next_node": "res_cut_minor_guidance"
+          }
+        ]
+      },
+      "res_cut_heavy_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 SEVERE BLEEDING WOUND EMERGENCY",
+        "message": "\u26a0\ufe0f Heavy wound bleeding requires emergency care!",
+        "warning": "Call 112 immediately and press hard on wound.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Apply firm, continuous direct pressure with sterile pad.",
+          "Do NOT remove embedded objects\u2014pad around them."
+        ]
+      },
+      "res_cut_gaping_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f DEEP WOUND EVALUATION (STITCHES)",
+        "message": "Deep or gaping wound.",
+        "warning": "Requires professional medical closure (stitches/sutures) within 6-8 hours.",
+        "guidance": [
+          "Apply direct pressure to stop bleeding.",
+          "Rinse gently with clean tap water.",
+          "Visit urgent care center for stitches."
+        ]
+      },
+      "res_cut_dirty_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f CONTAMINATED WOUND CARE (TETANUS RISK)",
+        "message": "Wound with infection or tetanus risk.",
+        "warning": "Requires clinical cleaning and potential tetanus booster.",
+        "guidance": [
+          "Flush thoroughly under cool tap water for 5 minutes.",
+          "Do NOT remove deeply embedded objects yourself.",
+          "Consult a doctor within 24 hours."
+        ]
+      },
+      "res_cut_minor_guidance": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MINOR CUT FIRST-AID",
+        "message": "Superficial minor wound.",
+        "warning": "Clean and dress to prevent infection.",
+        "guidance": [
+          "Wash hands before touching wound.",
+          "Rinse cut thoroughly under cool tap water.",
+          "Apply mild antiseptic ointment.",
+          "Cover with clean adhesive bandage."
+        ]
+      }
+    }
+  },
+  "shock": {
+    "topic_id": "shock",
+    "title": "Medical Shock Assessment",
+    "start_node": "q_symptoms",
+    "nodes": {
+      "q_symptoms": {
+        "type": "question",
+        "question": "What symptoms are present?",
+        "options": [
+          {
+            "label": "Pale, cold, clammy skin with rapid breathing",
+            "value": "clammy",
+            "next_node": "res_shock_emergency"
+          },
+          {
+            "label": "Weak rapid pulse, confusion, bluish lips",
+            "value": "pulse",
+            "next_node": "res_shock_emergency"
+          },
+          {
+            "label": "Severe blood loss or trauma",
+            "value": "trauma",
+            "next_node": "res_shock_emergency"
+          },
+          {
+            "label": "Mild dizziness / lightheadedness",
+            "value": "dizzy",
+            "next_node": "res_shock_moderate"
+          }
+        ]
+      },
+      "res_shock_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 MEDICAL SHOCK EMERGENCY",
+        "message": "\u26a0\ufe0f Circulatory shock is a life-threatening medical emergency!",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Lay person flat on back.",
+          "Elevate legs 12 inches (30 cm) unless head, neck, or leg injury is suspected.",
+          "Keep person warm with blanket.",
+          "Do NOT give food or water."
+        ]
+      },
+      "res_shock_moderate": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f PRE-SHOCK / DEHYDRATION EVALUATION",
+        "message": "Signs of mild circulatory distress or dizziness.",
+        "warning": "Monitor closely for worsening symptoms.",
+        "guidance": [
+          "Lie flat and rest quietly.",
+          "Loosen tight clothing.",
+          "Call 112 if skin becomes cold/clammy or confusion develops."
+        ]
+      }
+    }
+  },
+  "headache": {
+    "topic_id": "headache",
+    "title": "Headache Assessment",
+    "start_node": "q_headache_type",
+    "nodes": {
+      "q_headache_type": {
+        "type": "question",
+        "question": "What type of headache symptoms are you or the person experiencing?",
+        "options": [
+          {
+            "label": "Sudden severe 'thunderclap' pain, stiff neck, or high fever",
+            "value": "thunderclap",
+            "next_node": "res_headache_emergency"
+          },
+          {
+            "label": "Throbbing pain on one side with light/sound sensitivity or nausea",
+            "value": "migraine",
+            "next_node": "res_headache_migraine"
+          },
+          {
+            "label": "Dull aching pressure like a tight band around forehead/neck",
+            "value": "tension",
+            "next_node": "res_headache_tension"
+          },
+          {
+            "label": "Severe sharp piercing pain around one eye with tearing",
+            "value": "cluster",
+            "next_node": "res_headache_cluster"
+          },
+          {
+            "label": "Facial pressure around cheeks/forehead with nasal congestion",
+            "value": "sinus",
+            "next_node": "res_headache_sinus"
+          }
+        ]
+      },
+      "res_headache_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 CRITICAL HEADACHE EMERGENCY",
+        "message": "\u26a0\ufe0f Sudden severe 'thunderclap' headache or headache with stiff neck/fever can indicate a brain bleed or meningitis!",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call 112 (or local emergency medical services) immediately.",
+          "Keep the person lying down in a quiet, dark, and calm environment.",
+          "Do not give any pain medication, food, or drinks until evaluated by paramedics.",
+          "Monitor responsiveness, alertness, and breathing closely."
+        ]
+      },
+      "res_headache_migraine": {
+        "type": "result",
+        "urgency": "MODERATE",
+        "emergency": false,
+        "title": "\u26a0\ufe0f MIGRAINE HEADACHE GUIDANCE",
+        "message": "Pulsating pain usually on one side of head, often with light sensitivity or nausea.",
+        "warning": "Migraines can be debilitating. Rest in a dark, quiet room.",
+        "guidance": [
+          "Rest in a quiet, dark, well-ventilated room with eyes closed.",
+          "Apply a cool damp cloth or cold compress across your forehead or back of neck.",
+          "Sip water slowly to stay hydrated.",
+          "If prescribed, take migraine relief medication early during the attack.",
+          "Avoid bright screens, loud noises, and strong odors."
+        ]
+      },
+      "res_headache_tension": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb TENSION HEADACHE FIRST-AID",
+        "message": "Dull pressure on both sides of head or back of neck.",
+        "warning": "Usually resolves with rest, relaxation, and hydration.",
+        "guidance": [
+          "Apply a warm compress or heating pad to neck and shoulder muscles.",
+          "Perform gentle neck stretches and shoulder rolls.",
+          "Drink plenty of fresh water to ensure hydration.",
+          "Over-the-counter pain relievers (paracetamol/ibuprofen) may help if tolerated.",
+          "Take a break from computer screens and practice deep breathing."
+        ]
+      },
+      "res_headache_cluster": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f CLUSTER HEADACHE GUIDANCE",
+        "message": "Intense sharp pain around one eye with tearing or nasal congestion.",
+        "warning": "Requires medical evaluation for targeted treatment.",
+        "guidance": [
+          "Sit upright in a comfortable chair\u2014avoid lying down as it may worsen cluster pain.",
+          "Breathe deeply in fresh, cool air.",
+          "Apply a cool towel over the affected eye and temple.",
+          "Contact a doctor or specialist for high-flow oxygen or targeted prescription relief."
+        ]
+      },
+      "res_headache_sinus": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb SINUS HEADACHE GUIDANCE",
+        "message": "Facial pain and pressure from sinus congestion.",
+        "warning": "Consult doctor if pain lasts over 10 days or is accompanied by high fever.",
+        "guidance": [
+          "Inhale warm steam from a hot shower or bowl of warm water.",
+          "Apply warm moist compresses around nose, cheeks, and forehead.",
+          "Use saline nasal spray to clear congestion.",
+          "Stay hydrated with warm fluids like tea or clear broth."
+        ]
+      }
+    }
+  },
+  "nausea_vomiting": {
+    "topic_id": "nausea_vomiting",
+    "title": "Nausea & Vomiting Assessment",
+    "start_node": "q_vomit_type",
+    "nodes": {
+      "q_vomit_type": {
+        "type": "question",
+        "question": "What best describes the vomiting or nausea symptoms?",
+        "options": [
+          {
+            "label": "Vomiting blood or dark 'coffee-ground' material, or severe abdominal pain",
+            "value": "blood",
+            "next_node": "res_vomiting_emergency"
+          },
+          {
+            "label": "Inability to keep liquids down for 24+ hrs, signs of severe dehydration, or high fever",
+            "value": "dehydration",
+            "next_node": "res_vomiting_urgent"
+          },
+          {
+            "label": "Sudden nausea after eating suspect food (suspected food poisoning)",
+            "value": "food_poisoning",
+            "next_node": "res_vomiting_food_poisoning"
+          },
+          {
+            "label": "Mild nausea, motion sickness, or morning sickness",
+            "value": "mild",
+            "next_node": "res_vomiting_mild"
+          }
+        ]
+      },
+      "res_vomiting_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 GASTROINTESTINAL BLEEDING / VOMITING EMERGENCY",
+        "message": "\u26a0\ufe0f Vomiting blood or coffee-ground material indicates internal GI bleeding!",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call 112 immediately for emergency medical assistance.",
+          "Keep the person sitting upright or leaning forward to prevent aspiration into lungs.",
+          "Do NOT give anything to eat or drink.",
+          "Monitor breathing, pulse, and mental alertness continuously."
+        ]
+      },
+      "res_vomiting_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f SEVERE DEHYDRATION / PERSISTENT VOMITING ALERT",
+        "message": "Inability to retain fluids or signs of severe dehydration (dark urine, sunken eyes, dry mouth).",
+        "warning": "Requires urgent medical care or IV rehydration.",
+        "guidance": [
+          "Sip small amounts (teaspoonfuls) of Oral Rehydration Solution (ORS) or electrolyte water every 5-10 minutes.",
+          "Do not try to drink large quantities of liquid all at once.",
+          "Seek urgent care or hospital evaluation for IV fluid replacement."
+        ]
+      },
+      "res_vomiting_food_poisoning": {
+        "type": "result",
+        "urgency": "MODERATE",
+        "emergency": false,
+        "title": "\ud83d\udccb FOOD POISONING / ACUTE GASTROENTERITIS GUIDANCE",
+        "message": "Nausea, vomiting, or stomach cramps following food intake.",
+        "warning": "Stay hydrated and rest your stomach.",
+        "guidance": [
+          "Rest your stomach for 1-2 hours after vomiting.",
+          "Sip small amounts of clear fluids (ORS, diluted apple juice, clear broth).",
+          "Gradually reintroduce bland foods (BRAT diet: Bananas, Rice, Applesauce, Toast).",
+          "Avoid fatty, spicy, sugary, or dairy foods until completely recovered."
+        ]
+      },
+      "res_vomiting_mild": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MILD NAUSEA & MOTION SICKNESS FIRST-AID",
+        "message": "Mild nausea, travel sickness, or indigestion.",
+        "warning": "Symptomatic relief and rest recommended.",
+        "guidance": [
+          "Sip ginger tea, peppermint tea, or cold water slowly.",
+          "Sit upright in a well-ventilated area with fresh air.",
+          "Apply light pressure to the P6 acupressure point (3 finger-widths above inside wrist joint).",
+          "Rest quietly and avoid strong odors."
+        ]
+      }
+    }
+  },
+  "fever": {
+    "topic_id": "fever",
+    "title": "Fever Assessment",
+    "start_node": "q_fever_symptoms",
+    "nodes": {
+      "q_fever_symptoms": {
+        "type": "question",
+        "question": "What symptoms accompany the fever?",
+        "options": [
+          {
+            "label": "Fever with stiff neck, severe headache, confusion, or purple/red rash",
+            "value": "redflag",
+            "next_node": "res_fever_emergency"
+          },
+          {
+            "label": "High fever (>103\u00b0F / 39.4\u00b0C) or fever lasting more than 3 days",
+            "value": "high",
+            "next_node": "res_fever_high"
+          },
+          {
+            "label": "Fever with cough, sore throat, or body aches",
+            "value": "respiratory",
+            "next_node": "res_fever_respiratory"
+          },
+          {
+            "label": "Mild fever (<101\u00b0F / 38.3\u00b0C) with no severe symptoms",
+            "value": "mild",
+            "next_node": "res_fever_mild"
+          }
+        ]
+      },
+      "res_fever_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 FEVER RED-FLAG EMERGENCY",
+        "message": "\u26a0\ufe0f Fever accompanied by stiff neck, confusion, or unexplained rash can indicate meningitis or severe sepsis!",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call 112 immediately for emergency medical transport.",
+          "Keep the person resting in a comfortable position.",
+          "Do NOT submerge in ice water or rub with alcohol.",
+          "Monitor breathing, temperature, and responsiveness closely."
+        ]
+      },
+      "res_fever_high": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f HIGH / PROLONGED FEVER EVALUATION",
+        "message": "High body temperature or persistent fever.",
+        "warning": "Consult a healthcare provider for diagnosis and treatment.",
+        "guidance": [
+          "Rest comfortably in a cool, well-ventilated room.",
+          "Drink plenty of water, broth, or electrolyte fluids to prevent dehydration.",
+          "Apply lukewarm (not cold) damp cloths to forehead and wrists.",
+          "Take fever-reducing medication (paracetamol/acetaminophen or ibuprofen) according to dosage instructions.",
+          "Visit a clinic or emergency doctor if fever does not come down."
+        ]
+      },
+      "res_fever_respiratory": {
+        "type": "result",
+        "urgency": "MODERATE",
+        "emergency": false,
+        "title": "\ud83d\udccb FEVER WITH COLD / FLU SYMPTOMS",
+        "message": "Fever with viral or upper respiratory symptoms.",
+        "warning": "Monitor for chest pain or difficulty breathing.",
+        "guidance": [
+          "Get plenty of bed rest to help your body fight infection.",
+          "Stay well-hydrated with water, warm tea, and soups.",
+          "Use paracetamol/ibuprofen as directed to reduce fever and body aches.",
+          "Seek medical care if breathing becomes difficult or cough worsens significantly."
+        ]
+      },
+      "res_fever_mild": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MILD FEVER CARE",
+        "message": "Low-grade fever with minor discomfort.",
+        "warning": "Rest and hydration are key.",
+        "guidance": [
+          "Rest in lightweight, breathable clothing.",
+          "Sip water frequently throughout the day.",
+          "Monitor temperature every 4-6 hours.",
+          "Contact doctor if fever persists past 3 days."
+        ]
+      }
+    }
+  },
+  "abdominal_pain": {
+    "topic_id": "abdominal_pain",
+    "title": "Abdominal Pain Assessment",
+    "start_node": "q_stomach_symptoms",
+    "nodes": {
+      "q_stomach_symptoms": {
+        "type": "question",
+        "question": "What type of stomach or abdominal pain are you experiencing?",
+        "options": [
+          {
+            "label": "Severe pain starting near navel moving to lower right abdomen, with fever/vomiting",
+            "value": "appendicitis",
+            "next_node": "res_abdominal_emergency"
+          },
+          {
+            "label": "Sudden unbearable cramping pain radiating to back or groin (suspected stone)",
+            "value": "radiating",
+            "next_node": "res_abdominal_urgent"
+          },
+          {
+            "label": "Burning upper stomach pain, acid indigestion, or fullness",
+            "value": "gastritis",
+            "next_node": "res_abdominal_gastritis"
+          },
+          {
+            "label": "Mild bloating, gas, or mild menstrual cramps",
+            "value": "mild",
+            "next_node": "res_abdominal_mild"
+          }
+        ]
+      },
+      "res_abdominal_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 SUSPECTED APPENDICITIS / ACUTE ABDOMEN",
+        "message": "\u26a0\ufe0f Severe lower right abdominal pain with fever or rigidity can be appendicitis!",
+        "warning": "Call 112 or go to the emergency room immediately.",
+        "guidance": [
+          "Seek immediate emergency medical evaluation (112 / ER).",
+          "Do NOT eat, drink, or take laxatives/painkillers, as this can obscure diagnosis or complicate surgery.",
+          "Lie down in a comfortable position, drawn-up knees may reduce belly tension."
+        ]
+      },
+      "res_abdominal_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f SEVERE RADIATING ABDOMINAL PAIN ALERT",
+        "message": "Intense cramping pain potentially caused by kidney stones or gallbladder issues.",
+        "warning": "Prompt medical evaluation required.",
+        "guidance": [
+          "Rest quietly and avoid solid food.",
+          "Have someone transport you to an urgent care clinic or hospital emergency room.",
+          "Seek emergency care if pain becomes unbearable, or accompanied by high fever or vomiting."
+        ]
+      },
+      "res_abdominal_gastritis": {
+        "type": "result",
+        "urgency": "MODERATE",
+        "emergency": false,
+        "title": "\ud83d\udccb BURNING STOMACH / GASTRITIS FIRST-AID",
+        "message": "Upper abdominal burning or acid reflux discomfort.",
+        "warning": "Avoid trigger foods and lie down with head elevated.",
+        "guidance": [
+          "Avoid spicy, acidic, fatty foods, coffee, and alcohol.",
+          "Sip small amounts of warm water or chamomile tea.",
+          "Over-the-counter antacids may provide temporary relief.",
+          "Rest with your upper body slightly elevated."
+        ]
+      },
+      "res_abdominal_mild": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MILD INDIGESTION & BLOATING CARE",
+        "message": "Mild stomach cramping or gas discomfort.",
+        "warning": "Self-care and hydration recommended.",
+        "guidance": [
+          "Apply a warm heating pad or hot water bottle to your abdomen.",
+          "Drink warm peppermint or chamomile tea.",
+          "Take gentle short walks to ease gas pressure.",
+          "Consult doctor if pain lasts more than 24-48 hours."
+        ]
+      }
+    }
+  },
+  "dizziness": {
+    "topic_id": "dizziness",
+    "title": "Dizziness & Vertigo Assessment",
+    "start_node": "q_dizzy_symptoms",
+    "nodes": {
+      "q_dizzy_symptoms": {
+        "type": "question",
+        "question": "What symptoms accompany the dizziness?",
+        "options": [
+          {
+            "label": "Dizziness with facial drooping, arm weakness, speech difficulty (FAST stroke signs)",
+            "value": "stroke",
+            "next_node": "res_dizzy_stroke_emergency"
+          },
+          {
+            "label": "Room spinning sensation (vertigo) when moving head",
+            "value": "vertigo",
+            "next_node": "res_dizzy_vertigo"
+          },
+          {
+            "label": "Lightheadedness when standing up quickly or from dehydration",
+            "value": "lightheaded",
+            "next_node": "res_dizzy_lightheaded"
+          }
+        ]
+      },
+      "res_dizzy_stroke_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 SUSPECTED STROKE EMERGENCY",
+        "message": "\u26a0\ufe0f Dizziness with sudden weakness, numbness, facial drooping, or speech trouble is a STROKE EMERGENCY!",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call 112 immediately\u2014every minute counts for stroke treatment.",
+          "Lay the person down flat with head slightly raised.",
+          "Note the exact time symptoms started.",
+          "Do NOT give any food, drink, or aspirin."
+        ]
+      },
+      "res_dizzy_vertigo": {
+        "type": "result",
+        "urgency": "MODERATE",
+        "emergency": false,
+        "title": "\ud83d\udccb VERTIGO (SPINNING SENSATION) GUIDANCE",
+        "message": "Room spinning or balance disturbance, often inner-ear related.",
+        "warning": "Sit or lie down immediately to prevent falls.",
+        "guidance": [
+          "Sit or lie flat immediately on a stable surface.",
+          "Keep your head still and focus on a fixed point in front of you.",
+          "Avoid sudden posture changes, bright lights, or reading.",
+          "See an ENT doctor or physician if vertigo persists."
+        ]
+      },
+      "res_dizzy_lightheaded": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb LIGHTHEADEDNESS & DEHYDRATION CARE",
+        "message": "Feeling faint or lightheaded upon standing or from heat.",
+        "warning": "Sit down and hydrate.",
+        "guidance": [
+          "Sit down immediately or lie flat with legs slightly elevated.",
+          "Sip water or electrolyte fluids slowly.",
+          "Rest in a cool, well-ventilated area.",
+          "Stand up very slowly when feeling better."
+        ]
+      }
+    }
+  },
+  "hand_pain": {
+    "topic_id": "hand_pain",
+    "title": "Hand & Arm Pain Assessment",
+    "start_node": "q_hand_location",
+    "nodes": {
+      "q_hand_location": {
+        "type": "question",
+        "question": "Where exactly is the hand or arm pain located?",
+        "options": [
+          {
+            "label": "Left arm or left hand",
+            "value": "left_arm",
+            "next_node": "q_hand_onset"
+          },
+          {
+            "label": "Right arm or right hand",
+            "value": "right_arm",
+            "next_node": "q_hand_onset"
+          },
+          {
+            "label": "Wrist or palm",
+            "value": "wrist",
+            "next_node": "q_hand_onset"
+          },
+          {
+            "label": "Fingers or knuckles",
+            "value": "fingers",
+            "next_node": "q_hand_onset"
+          }
+        ]
+      },
+      "q_hand_onset": {
+        "type": "question",
+        "question": "Did the hand/arm pain start suddenly (e.g., after an injury/fall) or develop gradually?",
+        "options": [
+          {
+            "label": "Sudden pain after trauma, fall, or impact",
+            "value": "trauma",
+            "next_node": "q_hand_deformity"
+          },
+          {
+            "label": "Sudden onset without any physical injury",
+            "value": "sudden_no_trauma",
+            "next_node": "q_hand_cardiac_check"
+          },
+          {
+            "label": "Gradual onset over days or weeks",
+            "value": "gradual",
+            "next_node": "q_hand_character"
+          }
+        ]
+      },
+      "q_hand_deformity": {
+        "type": "question",
+        "question": "Is there any visible bone deformity, open wound, bone sticking out, or severe swelling?",
+        "options": [
+          {
+            "label": "Yes - bone protruding through skin or severe bleeding",
+            "value": "open_fracture",
+            "next_node": "res_hand_open_fracture_emergency"
+          },
+          {
+            "label": "Yes - visibly bent/deformed bone or unable to move fingers",
+            "value": "deformed",
+            "next_node": "res_hand_closed_fracture_urgent"
+          },
+          {
+            "label": "No - just swelling, bruising, or mild pain when moving",
+            "value": "sprain",
+            "next_node": "res_hand_sprain_care"
+          }
+        ]
+      },
+      "q_hand_cardiac_check": {
+        "type": "question",
+        "question": "Are you also experiencing chest pain, chest tightness, shortness of breath, sweating, or dizziness?",
+        "options": [
+          {
+            "label": "Yes - chest pain, breathlessness, or sweating",
+            "value": "cardiac_redflag",
+            "next_node": "res_hand_cardiac_emergency"
+          },
+          {
+            "label": "No - pain is only in the hand/arm",
+            "value": "isolated",
+            "next_node": "q_hand_character"
+          }
+        ]
+      },
+      "q_hand_character": {
+        "type": "question",
+        "question": "How would you describe the feeling of the pain?",
+        "options": [
+          {
+            "label": "Numbness, tingling, or 'pins and needles' down arm/fingers",
+            "value": "nerve",
+            "next_node": "res_hand_nerve_urgent"
+          },
+          {
+            "label": "Throbbing, redness, heat, or swollen joint",
+            "value": "inflammation",
+            "next_node": "res_hand_inflammation_guidance"
+          },
+          {
+            "label": "Dull ache, stiffness after repetitive computer work or lifting",
+            "value": "repetitive",
+            "next_node": "res_hand_strain_low"
+          }
+        ]
+      },
+      "res_hand_cardiac_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 CRITICAL CARDIAC EMERGENCY WARNING",
+        "message": "\u26a0\ufe0f Sudden left/right arm pain accompanied by chest tightness, breathlessness, or sweating can be a sign of a HEART ATTACK!",
+        "warning": "Call emergency services (112) immediately.",
+        "guidance": [
+          "Call emergency services (112) immediately.",
+          "Stop all physical activity and sit down in a comfortable position.",
+          "Loosen tight clothing around neck and chest.",
+          "Do NOT attempt to drive yourself to the hospital.",
+          "Monitor breathing and responsiveness closely."
+        ]
+      },
+      "res_hand_open_fracture_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 OPEN FRACTURE / SEVERE TRAUMA EMERGENCY",
+        "message": "\u26a0\ufe0f Bone protruding through skin or severe uncontrolled bleeding!",
+        "warning": "Call 112 immediately for emergency medical transport.",
+        "guidance": [
+          "Call 112 immediately.",
+          "Control bleeding by applying pressure around the wound (do not press on protruding bone).",
+          "Do NOT try to push the bone back in or straighten the arm/hand.",
+          "Cover wound loosely with a sterile bandage or clean cloth.",
+          "Keep arm immobilized until paramedics arrive."
+        ]
+      },
+      "res_hand_closed_fracture_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f SUSPECTED FRACTURE / DISLOCATION EVALUATION",
+        "message": "Deformed bone, severe pain, or inability to move hand/fingers following impact.",
+        "warning": "Requires urgent hospital X-ray and splinting.",
+        "guidance": [
+          "Immobilize the arm and hand using a sling or soft pillow padding.",
+          "Apply an ice pack wrapped in a cloth to reduce swelling (15 mins on/off).",
+          "Do NOT attempt to force or bend the fingers/wrist back into place.",
+          "Visit an urgent care center or emergency department immediately."
+        ]
+      },
+      "res_hand_nerve_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f NERVE IRRITATION / CARPAL TUNNEL EVALUATION",
+        "message": "Numbness, tingling, or shooting nerve pain down arm or into thumb/fingers.",
+        "warning": "Consult a doctor for neurological and orthopedic examination.",
+        "guidance": [
+          "Rest hand and arm in a neutral position; avoid bending wrist sharply.",
+          "Avoid repetitive gripping, typing, or heavy lifting.",
+          "Wear a supportive wrist splint if available, especially at night.",
+          "Schedule an appointment with a doctor if numbness or weakness persists."
+        ]
+      },
+      "res_hand_inflammation_guidance": {
+        "type": "result",
+        "urgency": "MODERATE",
+        "emergency": false,
+        "title": "\ud83d\udccb JOINT INFLAMMATION / TENDONITIS CARE",
+        "message": "Throbbing pain, joint swelling, or redness in wrist or fingers.",
+        "warning": "Rest, cold compress, and elevate.",
+        "guidance": [
+          "Rest the affected hand/wrist and avoid activities that trigger pain.",
+          "Apply a cold compress wrapped in a towel for 15-20 minutes 3 times a day.",
+          "Elevate hand on a pillow above heart level to reduce swelling.",
+          "Over-the-counter anti-inflammatory meds (ibuprofen) may help if tolerated."
+        ]
+      },
+      "res_hand_sprain_care": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb HAND / WRIST SPRAIN FIRST-AID (R.I.C.E.)",
+        "message": "Mild swelling or strain following minor twist or bump.",
+        "warning": "Follow R.I.C.E. protocol (Rest, Ice, Compression, Elevation).",
+        "guidance": [
+          "Rest: Avoid using the injured hand/wrist for heavy tasks.",
+          "Ice: Apply ice pack wrapped in cloth for 15 minutes at a time.",
+          "Compression: Wrap wrist/hand lightly with an elastic bandage (not too tight).",
+          "Elevation: Prop hand up on pillows when sitting or resting."
+        ]
+      },
+      "res_hand_strain_low": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MUSCLE STRAIN / REPETITIVE STRAIN FIRST-AID",
+        "message": "Dull ache or fatigue from typing, gaming, or overuse.",
+        "warning": "Take frequent ergonomic breaks.",
+        "guidance": [
+          "Take regular 5-minute breaks every 30 minutes from computer or manual work.",
+          "Perform gentle finger, wrist, and forearm stretches.",
+          "Apply warm compress to tight muscles after acute stage.",
+          "Ensure ergonomic keyboard and mouse positioning."
+        ]
+      }
+    }
+  },
+  "general_pain": {
+    "topic_id": "general_pain",
+    "title": "Pain Disambiguation",
+    "start_node": "q_pain_location",
+    "nodes": {
+      "q_pain_location": {
+        "type": "question",
+        "question": "Where are you experiencing pain?",
+        "options": [
+          {
+            "label": "\ud83e\udec0 Chest Pain",
+            "value": "chest_pain",
+            "next_topic": "chest_pain"
+          },
+          {
+            "label": "\ud83e\uddbe Hand / Arm Pain",
+            "value": "hand_pain",
+            "next_topic": "hand_pain"
+          },
+          {
+            "label": "\ud83e\uddb5 Leg / Foot Pain",
+            "value": "leg_pain",
+            "next_topic": "leg_pain"
+          },
+          {
+            "label": "\ud83e\udec4 Stomach / Abdominal Pain",
+            "value": "abdominal_pain",
+            "next_topic": "abdominal_pain"
+          },
+          {
+            "label": "\ud83e\udde0 Head Pain / Headache",
+            "value": "headache",
+            "next_topic": "headache"
+          },
+          {
+            "label": "\ud83e\uddb4 Joint / Back Pain",
+            "value": "joint_back_pain",
+            "next_topic": "joint_back_pain"
+          }
+        ]
+      }
+    }
+  },
+  "leg_pain": {
+    "topic_id": "leg_pain",
+    "title": "Leg & Foot Pain Assessment",
+    "start_node": "q_leg_type",
+    "nodes": {
+      "q_leg_type": {
+        "type": "question",
+        "question": "What type of leg or foot pain are you experiencing?",
+        "options": [
+          {
+            "label": "Severe sudden pain / Inability to stand",
+            "value": "severe_inability",
+            "next_node": "q_leg_trauma"
+          },
+          {
+            "label": "Swelling, twisted ankle, or sprain",
+            "value": "sprain_swelling",
+            "next_node": "q_leg_weight"
+          },
+          {
+            "label": "Cut, open wound, or severe bleeding",
+            "value": "cut_wound",
+            "next_node": "res_leg_wound"
+          },
+          {
+            "label": "Dull muscle cramp or tightness",
+            "value": "cramp",
+            "next_node": "res_leg_low"
+          },
+          {
+            "label": "Deep leg swelling with redness and warmth",
+            "value": "dvt_risk",
+            "next_node": "res_leg_emergency"
+          }
+        ]
+      },
+      "q_leg_trauma": {
+        "type": "question",
+        "question": "Was this caused by a severe fall, accident, or heavy impact?",
+        "options": [
+          {
+            "label": "Yes - high impact / injury",
+            "value": "yes",
+            "next_node": "res_leg_emergency"
+          },
+          {
+            "label": "No - started without trauma",
+            "value": "no",
+            "next_node": "q_leg_weight"
+          }
+        ]
+      },
+      "q_leg_weight": {
+        "type": "question",
+        "question": "Are you able to put weight or walk on the affected leg?",
+        "options": [
+          {
+            "label": "Yes - can walk normally",
+            "value": "yes",
+            "next_node": "res_leg_low"
+          },
+          {
+            "label": "With severe pain or limping",
+            "value": "limping",
+            "next_node": "res_leg_urgent"
+          },
+          {
+            "label": "No - completely unable to bear weight",
+            "value": "no",
+            "next_node": "res_leg_emergency"
+          }
+        ]
+      },
+      "res_leg_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 URGENT MEDICAL EVALUATION REQUIRED",
+        "message": "\u26a0\ufe0f Severe leg trauma, suspected fracture, or deep vein thrombosis (DVT) red flags detected.",
+        "warning": "Inability to bear weight after trauma or sudden severe swelling with warmth/redness requires emergency medical examination.",
+        "guidance": [
+          "Call emergency services (112) or go to the nearest Emergency Department.",
+          "Do NOT try to walk or force weight onto the injured leg.",
+          "Immobilize the leg in the position found; do not try to straighten or snap bones back.",
+          "If bleeding is present, apply gentle pressure with a clean cloth.",
+          "Keep the person calm, warm, and resting comfortably."
+        ]
+      },
+      "res_leg_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f SPRAIN / STRAIN FIRST-AID GUIDANCE",
+        "message": "Significant leg/ankle sprain or muscle strain.",
+        "warning": "Rest the leg immediately to prevent further ligament or tissue damage.",
+        "guidance": [
+          "Rest: Avoid putting weight on the injured leg or ankle.",
+          "Ice: Apply an ice pack wrapped in a cloth for 15-20 minutes every 2-3 hours.",
+          "Compression: Wrap with an elastic bandage snugly (not too tight).",
+          "Elevation: Prop the leg up above heart level using pillows.",
+          "If swelling worsens or you cannot stand after 24 hours, visit an urgent care medical clinic."
+        ]
+      },
+      "res_leg_low": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb MUSCLE CRAMP & MILD STRAIN FIRST AID",
+        "message": "Mild muscle soreness or leg cramp.",
+        "warning": "Monitor symptoms. Stay hydrated and avoid over-exertion.",
+        "guidance": [
+          "Gently stretch and massage the calf or thigh muscle.",
+          "Drink plenty of water or electrolyte solution.",
+          "Apply warm compress to tight muscles after any acute swelling subsides.",
+          "Rest the leg in a comfortable position."
+        ]
+      },
+      "res_leg_wound": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f LEG CUT & WOUND CARE",
+        "message": "Leg cut or laceration requiring first-aid.",
+        "warning": "Ensure bleeding is controlled and keep the wound clean to prevent infection.",
+        "guidance": [
+          "Apply firm, continuous direct pressure using a clean towel or gauze.",
+          "Elevate the leg above the heart while applying pressure.",
+          "Rinse wound gently with clean water once bleeding stops.",
+          "Apply sterile bandage; seek medical attention if deep or requires stitches."
+        ]
+      }
+    }
+  },
+  "joint_back_pain": {
+    "topic_id": "joint_back_pain",
+    "title": "Joint & Back Pain Assessment",
+    "start_node": "q_back_trauma",
+    "nodes": {
+      "q_back_trauma": {
+        "type": "question",
+        "question": "Did a recent high-impact fall, motor vehicle collision, or trauma cause this back/joint pain?",
+        "options": [
+          {
+            "label": "Yes - high impact fall / accident",
+            "value": "yes",
+            "next_node": "res_back_emergency"
+          },
+          {
+            "label": "No - routine movement or gradual onset",
+            "value": "no",
+            "next_node": "q_back_symptoms"
+          }
+        ]
+      },
+      "q_back_symptoms": {
+        "type": "question",
+        "question": "Are you experiencing any of these neurological symptoms?",
+        "options": [
+          {
+            "label": "Numbness or weakness in legs / arms",
+            "value": "numbness",
+            "next_node": "res_back_emergency"
+          },
+          {
+            "label": "Loss of bowel or bladder control",
+            "value": "incontinence",
+            "next_node": "res_back_emergency"
+          },
+          {
+            "label": "Swollen red joint with fever",
+            "value": "infection",
+            "next_node": "res_back_urgent"
+          },
+          {
+            "label": "Stiffness or dull muscle ache only",
+            "value": "stiffness",
+            "next_node": "res_back_low"
+          }
+        ]
+      },
+      "res_back_emergency": {
+        "type": "result",
+        "urgency": "EMERGENCY",
+        "emergency": true,
+        "title": "\ud83d\udea8 POTENTIAL SPINAL EMERGENCY WARNING",
+        "message": "\u26a0\ufe0f Neurological deficits or severe spinal trauma red flags detected.",
+        "warning": "Back trauma or loss of sensation/control can indicate nerve compression or spinal cord injury. Seek immediate emergency care.",
+        "guidance": [
+          "Call emergency services (112) immediately.",
+          "Keep the person completely still; do NOT move their head, neck, or back.",
+          "Do not allow the person to stand or twist.",
+          "Keep the person warm and calm until paramedics arrive."
+        ]
+      },
+      "res_back_urgent": {
+        "type": "result",
+        "urgency": "URGENT",
+        "emergency": false,
+        "title": "\u26a0\ufe0f URGENT JOINT / BACK EVALUATION",
+        "message": "Joint swelling, severe pain, or fever detected.",
+        "warning": "A hot, swollen joint or severe back pain with fever requires prompt medical diagnosis.",
+        "guidance": [
+          "Rest the affected joint in a supported position.",
+          "Apply cold packs for acute joint swelling (15-20 mins).",
+          "Consult an urgent care physician promptly."
+        ]
+      },
+      "res_back_low": {
+        "type": "result",
+        "urgency": "LOW",
+        "emergency": false,
+        "title": "\ud83d\udccb BACK & JOINT CARE GUIDANCE",
+        "message": "Mild back strain or joint stiffness.",
+        "warning": "Maintain gentle posture and avoid heavy lifting.",
+        "guidance": [
+          "Rest in a comfortable position (e.g. lying flat with pillows under knees).",
+          "Apply mild heat or ice to the affected muscle area.",
+          "Avoid bending or lifting heavy objects.",
+          "Perform gentle walking as tolerated."
+        ]
+      }
+    }
+  }
+}
