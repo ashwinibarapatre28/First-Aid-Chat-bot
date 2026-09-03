@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ emergency.title }} – FirstAid AI Guidance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Hidden metadata for localStorage history tracking -->
+    <div id="emergencyGuideMeta" 
+         data-id="{{ emergency.id }}" 
+         data-title="{{ emergency.title }}" 
+         data-severity="{{ emergency.severity }}"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <div class="logo-icon">➕</div>
+                FirstAid <span class="highlight">AI</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/#emergencyGrid" class="nav-link">First-Aid Topics</a></li>
+                <li><a href="/history" class="nav-link">History</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="chip-btn btn-emergency-mode-toggle" style="background:#fee2e2; color:#dc2626; border-color:#fca5a5;">
+                    🚨 Emergency Mode
+                </button>
+                <a href="tel:112" class="btn-emergency-call">
+                    🚨 CALL 112
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+
+        <!-- Back Button & Breadcrumb -->
+        <div style="margin-bottom:1.5rem;">
+            <a href="/" style="font-weight:600; color:var(--text-muted); display:inline-flex; align-items:center; gap:0.4rem;">
+                <i data-lucide="arrow-left" style="width:16px; height:16px;"></i> Back to Emergency Topics
+            </a>
+        </div>
+
+        <!-- Guidance Header -->
+        <div class="guidance-header">
+            <div class="guidance-title-row">
+                <div>
+                    <span class="severity-badge {{ emergency.severity.lower() }}" style="margin-bottom:0.5rem; display:inline-block;">
+                        {{ emergency.severity }} PRIORITY
+                    </span>
+                    <h1 style="font-size:2.4rem; font-weight:800;">{{ emergency.title }}</h1>
+                    <p style="color:var(--text-muted); font-size:1.05rem; margin-top:0.3rem;">{{ emergency.short_description }}</p>
+                </div>
+                <a href="tel:112" class="btn-primary" style="padding:0.8rem 1.6rem; font-size:1.05rem;">
+                    <i data-lucide="phone-call"></i> Call 112 Immediately
+                </a>
+            </div>
+
+            <div class="guidance-warning-box">
+                <i data-lucide="alert-triangle" style="flex-shrink:0; color:#dc2626;"></i>
+                <div>
+                    <strong>Immediate Action Warning:</strong> {{ emergency.warning }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Step-by-Step Guidance Container -->
+        <div class="step-container">
+
+            <!-- Main Interactive Step Card -->
+            <div class="step-main-card">
+                <div>
+                    <div class="step-number-tag" id="activeStepTag">STEP 1</div>
+                    <div class="step-instruction-text" id="activeStepText">
+                        {{ emergency.steps[0] }}
+                    </div>
+                </div>
+
+                <!-- Hidden step elements for JS switcher -->
+                <div style="display:none;" id="allStepsData">
+                    {% for step in emergency.steps %}
+                    <span data-step-text="{{ step }}"></span>
+                    {% endfor %}
+                </div>
+
+                <!-- Navigation Controls for Steps -->
+                <div class="step-nav-bar">
+                    <button class="btn-secondary" id="btnPrevStep" style="color:var(--text-main); border-color:var(--border-hover);">
+                        <i data-lucide="chevron-left"></i> Previous Step
+                    </button>
+                    <span class="step-counter-text" id="stepCounterText">Step 1 of {{ emergency.steps | length }}</span>
+                    <button class="btn-primary" id="btnNextStep">
+                        Next Step <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar Panel: Voice Guidance & Emergency Timer -->
+            <div class="sidebar-panel">
+
+                <!-- Voice Read Aloud Widget -->
+                <div class="panel-card">
+                    <h3 class="panel-title"><i data-lucide="volume-2" style="color:var(--primary-red);"></i> Voice Assistant</h3>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Listen to instructions aloud while providing assistance.</p>
+                    
+                    <div style="display:flex; flex-direction:column; gap:0.6rem;">
+                        <button class="btn-primary" id="voicePlayBtn" style="justify-center; width:100%;">
+                            <i data-lucide="play"></i> 🔊 Read Instructions
+                        </button>
+                        <div style="display:flex; gap:0.5rem;">
+                            <button class="btn-secondary" id="voicePauseBtn" style="flex:1; justify-center; color:var(--text-main); border-color:var(--border-hover);">
+                                ⏸ Pause
+                            </button>
+                            <button class="btn-secondary" id="voiceStopBtn" style="flex:1; justify-center; color:var(--text-main); border-color:var(--border-hover);">
+                                🔇 Stop
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Response Timer Widget -->
+                <div class="panel-card">
+                    <h3 class="panel-title"><i data-lucide="timer" style="color:var(--accent-amber);"></i> Response Timer</h3>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem;">Track response time for CPR cycles or direct pressure.</p>
+                    
+                    <div class="timer-display" id="timerDisplay">00:00</div>
+                    
+                    <div class="timer-controls">
+                        <button class="timer-btn start" id="timerStartBtn">▶ Start</button>
+                        <button class="timer-btn pause" id="timerPauseBtn">⏸ Pause</button>
+                        <button class="timer-btn reset" id="timerResetBtn">↺ Reset</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Safety Warnings Grid: When to call 112 & Critical Do NOTs -->
+        <div class="safety-grid">
+            <div class="safety-card call">
+                <h3 style="font-size:1.15rem; color:#991b1b; display:flex; align-items:center; gap:0.5rem;">
+                    <i data-lucide="phone-incoming"></i> When to Call Emergency (112)
+                </h3>
+                <ul>
+                    {% for item in emergency.when_to_call_emergency %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="safety-card donot">
+                <h3 style="font-size:1.15rem; color:#92400e; display:flex; align-items:center; gap:0.5rem;">
+                    <i data-lucide="x-circle"></i> Critical DO NOTs
+                </h3>
+                <ul>
+                    {% for item in emergency.do_not_list %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Quick Emergency Mode Overlay -->
+    <div class="emergency-mode-overlay" id="emergencyModeOverlay">
+        <div class="em-header">
+            <div>
+                <h2 class="em-title">🚨 EMERGENCY MODE</h2>
+                <p style="color:#cbd5e1; font-size:1rem;">"Stay calm. Follow the steps. Get professional help."</p>
+            </div>
+            <button id="emCloseBtn" style="color:white; font-size:2rem; font-weight:800;">✕</button>
+        </div>
+
+        <a href="tel:112" class="em-call-btn">
+            📞 CALL 112 NOW
+        </a>
+
+        <div class="em-step-box">
+            <div id="emStepTag" style="color:#ef4444; font-weight:800; font-size:1.4rem; margin-bottom:0.5rem;">STEP 1</div>
+            <div class="em-step-text" id="emStepText">
+                {{ emergency.steps[0] }}
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+            <button class="btn-secondary" id="emPrevStep" style="padding:1rem 1.5rem; font-size:1.2rem;">← Previous</button>
+            <span id="emStepCounter" style="font-size:1.1rem; color:#cbd5e1; font-weight:700;">Step 1 of {{ emergency.steps | length }}</span>
+            <button class="btn-primary" id="emNextStep" style="padding:1rem 1.5rem; font-size:1.2rem;">Next Step →</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 FirstAid AI. For emergency situations, call 112 immediately. Educational first-aid guidance only.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/voice.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/emergency_mode.js') }}"></script>
+    <script>
+        lucide.createIcons();
+
+        // Step Pager Logic for emergency.html
+        let currentStepIdx = 0;
+        const steps = [
+            {% for s in emergency.steps %}
+            "{{ s | replace('"', '\\"') }}",
+            {% endfor %}
+        ];
+
+        document.getElementById('btnNextStep').addEventListener('click', () => {
+            if (currentStepIdx < steps.length - 1) {
+                currentStepIdx++;
+                updateGuidanceStep();
+            }
+        });
+
+        document.getElementById('btnPrevStep').addEventListener('click', () => {
+            if (currentStepIdx > 0) {
+                currentStepIdx--;
+                updateGuidanceStep();
+            }
+        });
+
+        function updateGuidanceStep() {
+            document.getElementById('activeStepTag').textContent = `STEP ${currentStepIdx + 1}`;
+            document.getElementById('activeStepText').textContent = steps[currentStepIdx];
+            document.getElementById('stepCounterText').textContent = `Step ${currentStepIdx + 1} of ${steps.length}`;
+            
+            // Stop speech if step changes
+            if (typeof stopVoiceInstruction === 'function') stopVoiceInstruction();
+        }
+    </script>
+</body>
+</html>

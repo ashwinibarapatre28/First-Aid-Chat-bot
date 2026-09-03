@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FirstAid AI – Emergency First-Aid Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Feather / Lucide SVG Icons CDN for crisp emergency icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <div class="logo-icon">➕</div>
+                FirstAid <span class="highlight">AI</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="#emergencyGrid" class="nav-link">First-Aid Topics</a></li>
+                <li><a href="/history" class="nav-link">History</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="chip-btn btn-emergency-mode-toggle" style="background:#fee2e2; color:#dc2626; border-color:#fca5a5;">
+                    🚨 Emergency Mode
+                </button>
+                <a href="tel:112" class="btn-emergency-call">
+                    🚨 CALL 112
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+
+        <!-- Safety Medical Disclaimer Banner -->
+        <div class="disclaimer-banner">
+            <i data-lucide="alert-triangle"></i>
+            <div>
+                <strong>Medical Safety Notice:</strong> For life-threatening situations, contact your local emergency medical service (<strong>112</strong>) immediately. FirstAid AI provides general first-aid education and guidance only and does not replace professional medical care or paramedics.
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i data-lucide="shield-alert" style="width:14px; height:14px;"></i> Emergency First-Aid Guidance
+                </div>
+                <h1 class="hero-title">Need First-Aid Help?</h1>
+                <p class="hero-tagline">"Immediate Guidance. Clear Actions. Safer Decisions."</p>
+                <p style="color:#94a3b8; font-size:0.95rem; margin-bottom:1.8rem;">Select an emergency below or use our AI assistant to receive immediate step-by-step guidance.</p>
+
+                <div class="hero-buttons">
+                    <a href="#emergencyGrid" class="btn-primary">
+                        <i data-lucide="play-circle"></i> Start First-Aid Guide
+                    </a>
+                    <button class="btn-secondary btn-emergency-mode-toggle">
+                        <i data-lucide="zap"></i> Quick Emergency Mode
+                    </button>
+                    <a href="tel:112" class="btn-primary" style="background:linear-gradient(135deg,#991b1b,#7f1d1d);">
+                        <i data-lucide="phone-call"></i> Call Emergency (112)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Statistics Section -->
+        <section class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-icon red"><i data-lucide="book-open"></i></div>
+                <div class="stat-info">
+                    <h4>15+</h4>
+                    <p>First-Aid Topics</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon blue"><i data-lucide="grid"></i></div>
+                <div class="stat-info">
+                    <h4>15</h4>
+                    <p>Emergency Categories</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon amber"><i data-lucide="volume-2"></i></div>
+                <div class="stat-info">
+                    <h4>Available</h4>
+                    <p>Voice Guidance (TTS)</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon emerald"><i data-lucide="phone"></i></div>
+                <div class="stat-info">
+                    <h4>112</h4>
+                    <p>Emergency Access Number</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Filter Bar -->
+        <div class="section-header" id="emergencyGrid">
+            <div>
+                <h2 class="section-title"><i data-lucide="crosshair" style="color:var(--primary-red);"></i> Emergency Category Selection</h2>
+                <p style="color:var(--text-muted); font-size:0.92rem;">Select a topic for step-by-step first-aid action instructions.</p>
+            </div>
+            <div class="search-box">
+                <i data-lucide="search"></i>
+                <input type="text" id="emergencySearch" placeholder="Search first-aid topics (e.g. Burns, Choking, Bleeding)...">
+            </div>
+        </div>
+
+        <!-- 15 Emergency Category Grid -->
+        <div class="emergency-grid" id="gridContainer">
+            {% for item in emergencies %}
+            <div class="emergency-card {{ item.severity.lower() }}" 
+                 data-title="{{ item.title.lower() }}" 
+                 data-desc="{{ item.short_description.lower() }}" 
+                 data-keywords="{{ item.keywords | join(' ') }}">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon">
+                            {% if item.id == 'cpr' %}<i data-lucide="activity"></i>
+                            {% elif item.id == 'choking' %}<i data-lucide="wind"></i>
+                            {% elif item.id == 'severe-bleeding' %}<i data-lucide="droplet"></i>
+                            {% elif item.id == 'burns' %}<i data-lucide="flame"></i>
+                            {% elif item.id == 'fractures' %}<i data-lucide="bone"></i>
+                            {% elif item.id == 'fainting' %}<i data-lucide="user-minus"></i>
+                            {% elif item.id == 'seizures' %}<i data-lucide="zap"></i>
+                            {% elif item.id == 'electric-shock' %}<i data-lucide="power"></i>
+                            {% elif item.id == 'poisoning' %}<i data-lucide="skull"></i>
+                            {% elif item.id == 'heat-stroke' %}<i data-lucide="sun"></i>
+                            {% elif item.id == 'nosebleed' %}<i data-lucide="droplets"></i>
+                            {% elif item.id == 'allergic-reaction' %}<i data-lucide="shield-alert"></i>
+                            {% elif item.id == 'sprains' %}<i data-lucide="heart-pulse"></i>
+                            {% elif item.id == 'cuts-and-wounds' %}<i data-lucide="bandage"></i>
+                            {% else %}<i data-lucide="alert-circle"></i>{% endif %}
+                        </div>
+                        <span class="severity-badge {{ item.severity.lower() }}">{{ item.severity }}</span>
+                    </div>
+                    <h3 class="card-title">{{ item.title }}</h3>
+                    <p class="card-desc">{{ item.short_description }}</p>
+                </div>
+                <a href="/guide/{{ item.id }}" class="btn-card-guide">
+                    Get Guidance <i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+    </main>
+
+    <!-- Floating AI Chatbot Button & Drawer -->
+    <button class="chatbot-fab" id="chatbotFab">
+        <i data-lucide="bot"></i> FirstAid AI Assistant
+    </button>
+
+    <div class="chatbot-drawer" id="chatbotDrawer">
+        <div class="chat-header">
+            <div class="chat-header-title">
+                <i data-lucide="bot"></i> FirstAid AI Assistant
+            </div>
+            <button class="chat-close-btn" id="chatCloseBtn">&times;</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-msg bot">
+                <strong>Hello! How can I help you?</strong>
+                <p style="font-size:0.85rem; margin-top:0.3rem;">Describe your emergency (e.g. <em>"Someone is choking"</em> or <em>"Severe bleeding"</em>) to get instant step-by-step guidance.</p>
+                
+                <div class="chat-suggestions">
+                    <button class="chip-btn">Hand / Arm Pain</button>
+                    <button class="chip-btn">Headache</button>
+                    <button class="chip-btn">Vomiting & Nausea</button>
+                    <button class="chip-btn">Someone is choking</button>
+                    <button class="chip-btn">Severe bleeding</button>
+                    <button class="chip-btn">Burn injury</button>
+                    <button class="chip-btn">High fever</button>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type your emergency (e.g. bleeding)...">
+            <button class="chat-send-btn" id="chatSendBtn"><i data-lucide="send" style="width:16px; height:16px;"></i></button>
+        </div>
+    </div>
+
+    <!-- Quick Emergency Mode Overlay -->
+    <div class="emergency-mode-overlay" id="emergencyModeOverlay">
+        <div class="em-header">
+            <div>
+                <h2 class="em-title">🚨 EMERGENCY MODE</h2>
+                <p style="color:#cbd5e1; font-size:1rem;">"Stay calm. Follow the steps. Get professional help."</p>
+            </div>
+            <button id="emCloseBtn" style="color:white; font-size:2rem; font-weight:800;">✕</button>
+        </div>
+
+        <a href="tel:112" class="em-call-btn">
+            📞 CALL 112 NOW
+        </a>
+
+        <div class="em-step-box">
+            <div id="emStepTag" style="color:#ef4444; font-weight:800; font-size:1.4rem; margin-bottom:0.5rem;">STEP 1</div>
+            <div class="em-step-text" id="emStepText">
+                Assess area safety and call emergency medical services immediately.
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+            <button class="btn-secondary" id="emPrevStep" style="padding:1rem 1.5rem; font-size:1.2rem;">← Previous</button>
+            <span id="emStepCounter" style="font-size:1.1rem; color:#cbd5e1; font-weight:700;">Step 1 of 4</span>
+            <button class="btn-primary" id="emNextStep" style="padding:1rem 1.5rem; font-size:1.2rem;">Next Step →</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>FirstAid AI</h4>
+                <p>An educational emergency first-aid assistant providing clear, structured step-by-step guidance during critical medical events.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Emergency Contact</h4>
+                <p>India Primary Emergency: <strong>112</strong></p>
+                <p style="font-size:0.82rem; margin-top:0.4rem; color:#64748b;">If you are in another country, use your local emergency number (e.g. 911, 999, 112).</p>
+            </div>
+            <div class="footer-col">
+                <h4>Disclaimer</h4>
+                <p>FirstAid AI provides general first-aid guidance for educational purposes only. It is not a substitute for professional medical care, diagnosis, or treatment.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FirstAid AI. All Rights Reserved. Built for Academic Demonstration.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/voice.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/emergency_mode.js') }}"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

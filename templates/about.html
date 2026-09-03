@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About FirstAid AI – Emergency Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <div class="logo-icon">➕</div>
+                FirstAid <span class="highlight">AI</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/#emergencyGrid" class="nav-link">First-Aid Topics</a></li>
+                <li><a href="/history" class="nav-link">History</a></li>
+                <li><a href="/about" class="nav-link active">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="tel:112" class="btn-emergency-call">
+                    🚨 CALL 112
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+
+        <section style="background:var(--surface-white); border-radius:var(--radius-lg); padding:3rem; border:1px solid var(--border-light); margin-bottom:2.5rem;">
+            <div style="max-width:800px;">
+                <h1 style="font-size:2.5rem; font-weight:800; margin-bottom:1rem;">About FirstAid AI</h1>
+                <p style="font-size:1.15rem; color:var(--text-muted); line-height:1.7; margin-bottom:1.5rem;">
+                    <strong>FirstAid AI</strong> is a modern web-based first-aid assistance platform designed to provide accessible, structured, step-by-step emergency guidance during stressful medical situations.
+                </p>
+                <p style="color:var(--text-muted); line-height:1.7;">
+                    During medical emergencies, seconds matter. FirstAid AI simplifies decision-making by offering high-visibility instructions, an AI-powered natural language classification engine to quickly identify emergencies from user descriptions, voice read-aloud support, and instant access to emergency response hotlines (<strong>112</strong>).
+                </p>
+            </div>
+        </section>
+
+        <!-- Key Features Section -->
+        <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:1.5rem;">Key Features & Architecture</h2>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-bottom:3rem;">
+            <div class="panel-card">
+                <h3 style="color:var(--primary-red); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i data-lucide="zap"></i> Emergency-First Interface
+                </h3>
+                <p style="font-size:0.9rem; color:var(--text-muted);">High-contrast layout designed for rapid navigation and low cognitive load during high-stress situations.</p>
+            </div>
+
+            <div class="panel-card">
+                <h3 style="color:var(--accent-blue); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i data-lucide="list"></i> Step-by-Step Guidance
+                </h3>
+                <p style="font-size:0.9rem; color:var(--text-muted);">Clear, numbered action steps for 15+ common emergency categories with step-by-step pagination.</p>
+            </div>
+
+            <div class="panel-card">
+                <h3 style="color:var(--accent-amber); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i data-lucide="bot"></i> AI Intent Classification
+                </h3>
+                <p style="font-size:0.9rem; color:var(--text-muted);">Integrated Python NLP engine matching natural language user queries (e.g. <em>"my friend is choking"</em>) to the exact emergency topic.</p>
+            </div>
+
+            <div class="panel-card">
+                <h3 style="color:var(--accent-emerald); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i data-lucide="volume-2"></i> Voice Read-Aloud (TTS)
+                </h3>
+                <p style="font-size:0.9rem; color:var(--text-muted);">Browser Web Speech API integration reading emergency steps hands-free so rescuers can focus on the victim.</p>
+            </div>
+
+            <div class="panel-card">
+                <h3 style="color:var(--primary-red); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i data-lucide="phone"></i> 112 Emergency Access
+                </h3>
+                <p style="font-size:0.9rem; color:var(--text-muted);">One-touch mobile click-to-call functionality for 112 emergency services available globally on all pages.</p>
+            </div>
+
+            <div class="panel-card">
+                <h3 style="color:var(--accent-blue); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                    <i data-lucide="eye"></i> Quick Emergency Mode
+                </h3>
+                <p style="font-size:0.9rem; color:var(--text-muted);">Ultra-large text overlay mode hiding secondary UI for extreme readability and fast single-thumb operation.</p>
+            </div>
+        </div>
+
+        <!-- Strict Medical Disclaimer Section -->
+        <div style="background:#fff1f2; border:2px solid #fecdd3; border-radius:var(--radius-lg); padding:2rem; margin-bottom:3rem;">
+            <h3 style="color:#9f1239; font-size:1.4rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                <i data-lucide="alert-triangle"></i> Mandatory Medical Safety Disclaimer
+            </h3>
+            <p style="color:#9f1239; font-size:0.95rem; line-height:1.6; margin-bottom:1rem;">
+                FirstAid AI is an educational emergency information reference system. It is <strong>NOT</strong> a substitute for professional medical care, diagnosis, paramedical response, or clinical judgment.
+            </p>
+            <ul style="color:#9f1239; font-size:0.9rem; margin-left:1.2rem; line-height:1.6;">
+                <li>FirstAid AI does not diagnose medical diseases or clinical conditions.</li>
+                <li>FirstAid AI does not prescribe medications or calculate drug dosages.</li>
+                <li>FirstAid AI does not replace emergency paramedics, doctors, or hospital treatment.</li>
+                <li>In any critical or life-threatening situation, call <strong>112</strong> immediately.</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 FirstAid AI. All Rights Reserved. Designed for Academic & Educational Demonstrations.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

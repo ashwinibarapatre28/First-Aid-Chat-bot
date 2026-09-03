@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First-Aid Search & Topic History – FirstAid AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <div class="logo-icon">➕</div>
+                FirstAid <span class="highlight">AI</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/#emergencyGrid" class="nav-link">First-Aid Topics</a></li>
+                <li><a href="/history" class="nav-link active">History</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="tel:112" class="btn-emergency-call">
+                    🚨 CALL 112
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
+            <div>
+                <h1 style="font-size:2.2rem; font-weight:800;">User Topic History</h1>
+                <p style="color:var(--text-muted);">Your recently accessed first-aid emergency guides stored locally in your browser.</p>
+            </div>
+            <button class="btn-secondary" onclick="clearUserHistory()" style="color:#dc2626; border-color:#fca5a5;">
+                <i data-lucide="trash-2"></i> Clear History
+            </button>
+        </div>
+
+        <div class="history-table-container">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Emergency Topic</th>
+                        <th>Severity Level</th>
+                        <th>Date & Time Accessed</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                    <!-- Populated dynamically via script.js -->
+                </tbody>
+            </table>
+
+            <div id="historyEmptyMsg" style="display:none; padding:3rem; text-align:center; color:var(--text-muted);">
+                <i data-lucide="history" style="width:48px; height:48px; margin-bottom:1rem; color:var(--border-hover);"></i>
+                <h3>No History Recorded Yet</h3>
+                <p style="font-size:0.9rem; margin-top:0.4rem;">Select an emergency topic from the homepage to build your history log.</p>
+                <a href="/" class="btn-primary" style="margin-top:1.2rem;">Browse Topics</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 FirstAid AI. General first-aid guidance only.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHistoryTable();
+        });
+    </script>
+</body>
+</html>
