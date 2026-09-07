@@ -55,7 +55,13 @@ class EmergencyDetector:
             # Dizziness
             "dizziness": ["dizziness", "dizzy", "vertigo", "lightheaded", "spinning head", "unsteady", "lightheadedness"],
             # Hand and Arm Pain
-            "hand_pain": ["hand pain", "arm pain", "wrist pain", "finger pain", "hand hurt", "pain in hand", "pain in arm", "wrist hurt", "thumb pain", "knuckle pain", "palm pain", "elbow pain"],
+            "hand_pain": [
+                "hand pain", "arm pain", "wrist pain", "finger pain", "hand hurt", "pain in hand", "pain in arm",
+                "wrist hurt", "thumb pain", "knuckle pain", "palm pain", "elbow pain", "left arm pain", "left hand pain",
+                "left arm", "left hand", "right arm", "right hand", "pain in left arm", "pain in left hand",
+                "thumb", "little finger", "middle finger", "index finger", "ring finger", "pinky", "pinky pain",
+                "pain in finger", "finger hurt", "thumb hurt", "little finger pain", "middle finger pain"
+            ],
             # Leg and Foot Pain
             "leg_pain": ["leg pain", "foot pain", "knee pain", "calf pain", "thigh pain", "ankle pain", "leg hurt", "foot hurt", "knee hurt", "pain in leg", "pain in foot", "pain in knee", "shin pain", "toe pain", "heel pain"],
             # Joint and Back Pain

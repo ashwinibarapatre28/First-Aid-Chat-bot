@@ -2311,7 +2311,7 @@
           {
             "label": "Left arm or left hand",
             "value": "left_arm",
-            "next_node": "q_hand_onset"
+            "next_node": "q_left_hand_finger"
           },
           {
             "label": "Right arm or right hand",
@@ -2326,7 +2326,90 @@
           {
             "label": "Fingers or knuckles",
             "value": "fingers",
+            "next_node": "q_left_hand_finger"
+          }
+        ]
+      },
+      "q_left_hand_finger": {
+        "type": "question",
+        "question": "Which specific finger or area of your hand/arm is affected?",
+        "options": [
+          {
+            "label": "Thumb",
+            "value": "thumb",
+            "next_node": "q_finger_symptoms"
+          },
+          {
+            "label": "Index finger",
+            "value": "index_finger",
+            "next_node": "q_finger_symptoms"
+          },
+          {
+            "label": "Middle finger",
+            "value": "middle_finger",
+            "next_node": "q_finger_symptoms"
+          },
+          {
+            "label": "Ring finger",
+            "value": "ring_finger",
+            "next_node": "q_finger_symptoms"
+          },
+          {
+            "label": "Little finger (Pinky)",
+            "value": "little_finger",
+            "next_node": "q_finger_symptoms"
+          },
+          {
+            "label": "Entire arm or hand (Not specific to one finger)",
+            "value": "entire_arm",
             "next_node": "q_hand_onset"
+          }
+        ]
+      },
+      "q_finger_symptoms": {
+        "type": "question",
+        "question": "What kind of symptoms or pain are you experiencing in your finger/hand?",
+        "options": [
+          {
+            "label": "Numbness, tingling, or 'pins & needles'",
+            "value": "numbness",
+            "next_node": "q_finger_numbness_type"
+          },
+          {
+            "label": "Sudden injury, fall, cut, or finger jam",
+            "value": "trauma",
+            "next_node": "q_hand_deformity"
+          },
+          {
+            "label": "Swollen joint, redness, or throbbing pain",
+            "value": "swelling",
+            "next_node": "res_hand_inflammation_guidance"
+          },
+          {
+            "label": "Accompanied by chest pressure, shortness of breath, or sweating",
+            "value": "cardiac_redflag",
+            "next_node": "res_hand_cardiac_emergency"
+          }
+        ]
+      },
+      "q_finger_numbness_type": {
+        "type": "question",
+        "question": "Which specific finger(s) feel numb or tingling?",
+        "options": [
+          {
+            "label": "Thumb, Index, or Middle finger",
+            "value": "median_nerve",
+            "next_node": "res_carpal_tunnel_guidance"
+          },
+          {
+            "label": "Little finger (Pinky) or Ring finger",
+            "value": "ulnar_nerve",
+            "next_node": "res_ulnar_nerve_guidance"
+          },
+          {
+            "label": "All fingers / Whole hand",
+            "value": "all_fingers",
+            "next_node": "res_hand_nerve_urgent"
           }
         ]
       },
@@ -2507,6 +2590,36 @@
           "Perform gentle finger, wrist, and forearm stretches.",
           "Apply warm compress to tight muscles after acute stage.",
           "Ensure ergonomic keyboard and mouse positioning."
+        ]
+      },
+      "res_carpal_tunnel_guidance": {
+        "type": "result",
+        "urgency": "MODERATE",
+        "emergency": false,
+        "title": "\ud83d\udccb THUMB / INDEX / MIDDLE FINGER CARPAL TUNNEL GUIDANCE",
+        "message": "Numbness, tingling, or pain in the thumb, index, or middle finger often indicates median nerve compression (Carpal Tunnel Syndrome).",
+        "warning": "Avoid prolonged wrist flexion, repetitive typing, or heavy gripping.",
+        "guidance": [
+          "Rest the hand and keep the wrist in a neutral, straight position.",
+          "Wear a supportive wrist splint (especially at night) to prevent nerve pinching.",
+          "Take regular ergonomic breaks during computer or manual work.",
+          "Apply ice pack wrapped in cloth for 10-15 minutes if swelling is present.",
+          "Consult a doctor or neurologist if numbness or thumb weakness persists."
+        ]
+      },
+      "res_ulnar_nerve_guidance": {
+        "type": "result",
+        "urgency": "MODERATE",
+        "emergency": false,
+        "title": "\ud83d\udccb LITTLE FINGER & RING FINGER ULNAR NERVE GUIDANCE",
+        "message": "Numbness, tingling, or pain in the little finger (pinky) and ring finger is commonly caused by ulnar nerve compression at the elbow.",
+        "warning": "Avoid leaning on your elbows or bending your arms sharply for long periods.",
+        "guidance": [
+          "Avoid resting your elbows on hard desks or armrests.",
+          "Keep your arm straighter when sleeping or holding a phone.",
+          "Avoid tight elbow sleeves or excessive elbow bending.",
+          "Perform gentle nerve glide exercises to relieve tension.",
+          "Schedule a physician evaluation if numbness, tingling, or weak grip continues."
         ]
       }
     }
